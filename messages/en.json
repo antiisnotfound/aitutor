@@ -208,7 +208,8 @@
       "startFailed": "We couldn't start the call. Please try again.",
       "connectionLost": "The connection was lost.",
       "endFailed": "We couldn't save the session. Check your connection and try again."
-    }
+    },
+    "avatarLoading": "Loading your tutor…"
   },
   "summary": {
     "metaTitle": "Session summary",

@@ -4,6 +4,8 @@ import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { SESSION } from "@/config/app";
 import { pictureFor } from "@/content/objects";
+import { TutorAvatar, TutorPortrait } from "@/components/tutor/tutor-avatar";
+import { avatarUrl, type AvatarConfig } from "@/config/avatars";
 import { Link, useRouter } from "@/i18n/navigation";
 import { createTransport, type RealtimeTransport, type TransportEvent } from "@/lib/ai/client";
 import {
@@ -26,6 +28,7 @@ const mmss = (s: number) =>
 
 export function LiveSession(props: {
   tutorName: string;
+  avatar: AvatarConfig;
   target: string;
   level: string;
   placement: boolean;
@@ -34,7 +37,7 @@ export function LiveSession(props: {
   kids: boolean;
   demo: boolean;
 }) {
-  const { tutorName, target, level, placement, nativeName, learnerInitial, kids, demo } = props;
+  const { tutorName, avatar, target, level, placement, nativeName, learnerInitial, kids, demo } = props;
   const t = useTranslations("live");
   const router = useRouter();
 
@@ -64,7 +67,7 @@ export function LiveSession(props: {
   const showTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tutorBars = useRef<HTMLDivElement>(null);
   const learnerBars = useRef<HTMLDivElement>(null);
-  const tutorGlow = useRef<HTMLDivElement>(null);
+  const [liveTransport, setLiveTransport] = useState<RealtimeTransport | null>(null);
 
   useEffect(() => {
     turnsRef.current = turns;
@@ -199,6 +202,7 @@ export function LiveSession(props: {
       tr.on(onEvent);
       startedAt.current = Date.now();
       await tr.start();
+      setLiveTransport(tr);
       setPhase("live");
     } catch (err) {
       transport.current?.stop();
@@ -207,6 +211,17 @@ export function LiveSession(props: {
       setPhase("error");
     }
   }
+
+  // Warm the HTTP cache with the avatar file while the learner is in the lobby.
+  useEffect(() => {
+    const url = avatarUrl(avatar);
+    if (!url) return;
+    const link = document.createElement("link");
+    link.rel = "prefetch";
+    link.href = url;
+    document.head.appendChild(link);
+    return () => link.remove();
+  }, [avatar]);
 
   // ---------------------------------------------------------------- timer
   const limit = (planned ?? SESSION.hardCapMinutes) * 60;
@@ -231,7 +246,6 @@ export function LiveSession(props: {
     const loop = () => {
       const lv = transport.current?.levels() ?? { tutor: 0, learner: 0 };
       tutorBars.current?.style.setProperty("--lvl", lv.tutor.toFixed(3));
-      tutorGlow.current?.style.setProperty("--lvl", lv.tutor.toFixed(3));
       learnerBars.current?.style.setProperty("--lvl", lv.learner.toFixed(3));
       raf = requestAnimationFrame(loop);
     };
@@ -367,15 +381,14 @@ export function LiveSession(props: {
           </p>
         </div>
 
-        {/* tutor */}
-        <div ref={tutorGlow} className="relative -translate-y-10 md:-translate-y-6" style={{ ["--lvl" as string]: 0 }}>
-          <div
-            aria-hidden="true"
-            className="absolute -inset-4 rounded-full bg-lime/40 blur-xl"
-            style={{ opacity: "calc(var(--lvl) * 1.4)" }}
-          />
-          <TutorPortrait name={tutorName} size="xl" speaking={tutorSpeaking} />
-        </div>
+        {/* tutor: 3D avatar with lip-sync, or the still portrait */}
+        <TutorAvatar
+          name={tutorName}
+          avatar={avatar}
+          speaking={tutorSpeaking}
+          transport={liveTransport}
+          loadingLabel={t("avatarLoading")}
+        />
 
         {/* object pop-up */}
         <div role="status" aria-live="polite" className="absolute right-3 top-16 md:right-6">
@@ -532,20 +545,6 @@ export function LiveSession(props: {
 }
 
 // ------------------------------------------------------------------------
-
-/** Still placeholder until the 3D tutor arrives in Phase 4. */
-function TutorPortrait({ name, size, speaking }: { name: string; size: "lg" | "xl"; speaking?: boolean }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`relative grid place-items-center rounded-full border-4 bg-gradient-to-b from-teal-dark to-navy font-display text-lime shadow-2xl ${
-        size === "xl" ? "size-32 text-6xl sm:size-40 md:size-56 md:text-7xl" : "size-28 text-5xl"
-      } ${speaking ? "border-lime" : "border-white/15"} transition-colors`}
-    >
-      {name[0]}
-    </div>
-  );
-}
 
 function VoiceBars({ ref, small }: { ref: React.Ref<HTMLDivElement>; small?: boolean }) {
   const weights = [0.6, 1, 0.8, 1, 0.6];

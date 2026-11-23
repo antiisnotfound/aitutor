@@ -26,6 +26,12 @@ export interface RealtimeTransport {
   /** Out-of-band instruction (e.g. "time is nearly up"). */
   nudge(instruction: string): void;
   stop(): void;
+  /** True when the tutor's voice arrives as an audio stream (false for the demo tutor). */
+  readonly hasAudioStream: boolean;
+  /** The tutor's incoming audio, if any (used for audio-driven lip-sync). */
+  remoteStream(): MediaStream | null;
+  /** Mute the default playback when the avatar plays the voice itself (delayed for lip-sync). */
+  setPlaybackMuted(muted: boolean): void;
   /** 0–1 voice levels for the bars. */
   levels(): { tutor: number; learner: number };
 }

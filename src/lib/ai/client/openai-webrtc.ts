@@ -11,6 +11,7 @@ const bridgeNote = (native: string) =>
  * client secret minted by our server; audio flows directly to OpenAI.
  */
 export class OpenAIWebRTCTransport extends Emitter implements RealtimeTransport {
+  readonly hasAudioStream = true;
   private pc: RTCPeerConnection | null = null;
   private dc: RTCDataChannel | null = null;
   private mic: MediaStream | null = null;
@@ -115,6 +116,16 @@ export class OpenAIWebRTCTransport extends Emitter implements RealtimeTransport 
     this.mic?.getTracks().forEach((t) => t.stop());
     if (this.audioEl) this.audioEl.srcObject = null;
     void this.ctx?.close();
+  }
+
+  remoteStream() {
+    return (this.audioEl?.srcObject as MediaStream | null) ?? null;
+  }
+
+  setPlaybackMuted(muted: boolean) {
+    // The element must keep the stream attached (Chrome only feeds WebRTC
+    // audio into Web Audio while a media element consumes it), so mute it.
+    if (this.audioEl) this.audioEl.muted = muted;
   }
 
   levels() {

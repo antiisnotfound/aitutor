@@ -208,7 +208,8 @@
       "startFailed": "Non siamo riusciti ad avviare la chiamata. Riprova.",
       "connectionLost": "La connessione si è interrotta.",
       "endFailed": "Non siamo riusciti a salvare la sessione. Controlla la connessione e riprova."
-    }
+    },
+    "avatarLoading": "Caricamento del tutor…"
   },
   "summary": {
     "metaTitle": "Riepilogo della sessione",

@@ -208,7 +208,8 @@
       "startFailed": "Nuk arritëm ta nisim thirrjen. Provo përsëri.",
       "connectionLost": "Lidhja u ndërpre.",
       "endFailed": "Nuk arritëm ta ruajmë seancën. Kontrollo lidhjen dhe provo përsëri."
-    }
+    },
+    "avatarLoading": "Po ngarkohet mësuesi…"
   },
   "summary": {
     "metaTitle": "Përmbledhja e seancës",

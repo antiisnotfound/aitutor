@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
+import { AVATARS } from "@/config/avatars";
 import { TUTORS } from "@/config/learning";
 import { initLocale } from "@/i18n/locale";
 import { THEME_COOKIE, themeFor } from "@/lib/theme";
@@ -23,6 +24,7 @@ export default async function SessionPage({ params }: PageProps<"/[locale]/sessi
   return (
     <LiveSession
       tutorName={TUTORS[learner.targetLanguage][learner.tutorGender]}
+      avatar={AVATARS[learner.targetLanguage][learner.tutorGender]}
       target={learner.targetLanguage}
       level={learner.level === "A0" ? "A1" : learner.level}
       placement={!learner.placementDone}

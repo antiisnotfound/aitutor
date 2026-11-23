@@ -9,6 +9,7 @@ import { Emitter, makeAnalyser, rms, type RealtimeTransport } from "./transport"
  * speech isn't recognised: holding the mic "says" the scripted line.
  */
 export class MockTransport extends Emitter implements RealtimeTransport {
+  readonly hasAudioStream = false;
   private step = 0;
   private speaking = false;
   private talking = false;
@@ -76,6 +77,12 @@ export class MockTransport extends Emitter implements RealtimeTransport {
     this.mic?.getTracks().forEach((t) => t.stop());
     void this.ctx?.close();
   }
+
+  remoteStream() {
+    return null; // speech synthesis can't be tapped; the avatar uses levels() instead
+  }
+
+  setPlaybackMuted() {}
 
   levels() {
     const t = performance.now() / 120;

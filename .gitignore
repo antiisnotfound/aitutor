@@ -40,3 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 !.env.example
+
+# copied from node_modules by scripts/copy-vendor.mjs
+/public/vendor/
+# avatar GLBs are large and licence-restricted; host them outside git
+/public/avatars/*.glb

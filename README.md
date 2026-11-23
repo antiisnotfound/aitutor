@@ -25,6 +25,13 @@ so the whole call → summary loop can be clicked through.
 4. Auth → Providers → Google: enable, paste the Google OAuth client ID/secret
    (Google Cloud console → OAuth client, authorised redirect URI = the callback URL Supabase shows).
 
+## 3D tutor (Phase 4)
+The tutor is a TalkingHead (three.js) avatar with audio-driven lip-sync (HeadAudio) on the live voice
+stream, so it works for any language. Avatars are GLB files (Avaturn Type-2 exports work as-is) named
+per tutor in `src/config/avatars.ts`; host them in `public/avatars/` (git-ignored) or a CDN and set
+`NEXT_PUBLIC_AVATAR_BASE_URL`. Without avatars, on weak devices (or < 12 fps) the still portrait is shown.
+`npm run dev` / `build` copy the lip-sync worklet + model into `public/vendor/` automatically.
+
 ## Where things live
 | Path | What |
 |---|---|
@@ -39,6 +46,8 @@ so the whole call → summary loop can be clicked through.
 | `src/lib/data/` | Sessions, skill map, vocabulary, usage storage (Supabase or demo memory) |
 | `src/app/api/session/` | Start (hidden goal + realtime key), caption translation, end (assessment + saves) |
 | `src/app/[locale]/(focus)/session` | Live video-call screen and session summary |
+| `src/lib/avatar/engine.ts` + `src/components/tutor/` | 3D tutor (lazy-loaded), lip-sync, portrait fallback |
+| `src/config/avatars.ts` | Avatar file per tutor, framing and blend-shape baseline |
 | `src/i18n/` + `messages/*.json` | Locales and UI strings |
 | `src/proxy.ts` | Locale routing, session refresh, signed-in/out redirects |
 | `src/lib/supabase/` | Server + proxy Supabase clients |
