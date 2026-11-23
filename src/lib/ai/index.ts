@@ -1,6 +1,7 @@
 import "server-only";
 import type { NewWord, SessionEvent, SessionSummary, TranscriptTurn } from "@/lib/session/types";
 import type { AiProviderName } from "@/lib/session/types";
+import { demoFlag } from "@/lib/demo-config";
 import { mockProvider } from "./mock";
 import { openaiProvider } from "./openai";
 import type { Criterion } from "@/content/exam-a1";
@@ -51,7 +52,7 @@ export interface AiProvider {
 
 export function getAiProvider(): AiProvider {
   if (process.env.OPENAI_API_KEY) return openaiProvider;
-  if (process.env.NODE_ENV !== "production" || process.env.DEMO_MODE === "1") return mockProvider;
+  if (process.env.NODE_ENV !== "production" || demoFlag()) return mockProvider;
   throw new Error("OPENAI_API_KEY is not set");
 }
 
