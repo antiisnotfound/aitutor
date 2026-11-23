@@ -2,6 +2,7 @@ import createIntlMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "@/i18n/routing";
 import { refreshSession } from "@/lib/supabase/proxy";
+import { DEMO_COOKIE, isDemoMode } from "@/lib/demo-config";
 
 const handleI18n = createIntlMiddleware(routing);
 
@@ -19,7 +20,9 @@ export async function proxy(request: NextRequest) {
   // next-intl is redirecting (e.g. "/" → "/sq"): let it.
   if (response.headers.has("location")) return response;
 
-  const { signedIn } = await refreshSession(request, response);
+  const signedIn = isDemoMode()
+    ? request.cookies.has(DEMO_COOKIE)
+    : (await refreshSession(request, response)).signedIn;
 
   const [, locale, ...rest] = request.nextUrl.pathname.split("/");
   const path = `/${rest.join("/")}`;

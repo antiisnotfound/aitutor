@@ -4,7 +4,9 @@ import { getTranslations } from "next-intl/server";
 import { BrandMark } from "@/components/brand-mark";
 import { LanguagePicker } from "@/components/language-picker";
 import { Link } from "@/i18n/navigation";
+import { isDemoMode } from "@/lib/demo-config";
 import { getSupabaseEnv } from "@/lib/supabase/env";
+import { startDemo } from "./actions";
 import { LoginForm } from "./login-form";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/login">): Promise<Metadata> {
@@ -34,6 +36,16 @@ export default async function LoginPage({ params, searchParams }: PageProps<"/[l
       <div className="mb-8">
         <LanguagePicker label={t("nativeLanguage")} />
       </div>
+
+      {isDemoMode() && (
+        <form action={startDemo} className="mb-6 rounded-card border border-dashed border-link p-4">
+          <input type="hidden" name="locale" value={locale} />
+          <p className="text-sm text-muted">{t("demoHint")}</p>
+          <button type="submit" className="mt-3 min-h-tap w-full rounded-xl border border-link font-semibold text-link">
+            {t("demoButton")}
+          </button>
+        </form>
+      )}
 
       <LoginForm
         locale={locale}

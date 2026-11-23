@@ -1,9 +1,28 @@
 {
   "common": {
-    "languageNames": { "en": "English", "sq": "Shqip", "it": "Italiano" },
+    "languageNames": {
+      "en": "English",
+      "sq": "Shqip",
+      "it": "Italiano"
+    },
     "partner": "In collaborazione con Discover Albania",
     "comingSoon": "Prossimamente",
-    "skipToContent": "Vai al contenuto"
+    "skipToContent": "Vai al contenuto",
+    "estimate": {
+      "weeks": "Con {minutes} min al giorno, circa {count, plural, one {# settimana} other {# settimane}} per arrivare a {level}.",
+      "months": "Con {minutes} min al giorno, circa {count, plural, one {# mese} other {# mesi}} per arrivare a {level}.",
+      "years": "Con {minutes} min al giorno, circa {count, plural, one {# anno} other {# anni}} per arrivare a {level}."
+    },
+    "languages": {
+      "en": "Inglese",
+      "it": "Italiano",
+      "sq": "Albanese"
+    },
+    "languagesInline": {
+      "en": "inglese",
+      "it": "italiano",
+      "sq": "albanese"
+    }
   },
   "login": {
     "metaTitle": "Accedi",
@@ -32,7 +51,9 @@
       "missingFields": "Compila tutti i campi.",
       "notConfigured": "L'accesso non è ancora configurato: aggiungi le chiavi Supabase in .env.local.",
       "callback": "Non siamo riusciti a completare l'accesso. Riprova."
-    }
+    },
+    "demoHint": "Modalità demo: Supabase non è configurato, quindi puoi provare l'app con un account locale temporaneo.",
+    "demoButton": "Prova la demo"
   },
   "parent": {
     "metaTitle": "Registrazione genitore",
@@ -50,16 +71,101 @@
   "home": {
     "greeting": "Ciao, {name}!",
     "greetingNoName": "Ciao!",
-    "nextUp": "Prossimo passo: crea il tuo piano di studio",
-    "nextUpBody": "Scegli la lingua da imparare, i tuoi obiettivi e il tuo tutor. Ci vuole circa un minuto."
+    "streakLabel": "Serie",
+    "streak": "{count, plural, one {# giorno} other {# giorni}}",
+    "towards": "Verso il livello {level}",
+    "stars": "{count} stelle su {total}",
+    "upNext": "Prossimi obiettivi",
+    "talk": "Parla con {name}",
+    "talkKids": "Pronto a chiacchierare?",
+    "talkMinutes": "Conversazione di {minutes} min",
+    "placement": "Prima chiacchierata · trova il tuo livello",
+    "wordReview": "Ripasso parole",
+    "wordsDue": "{count, plural, =0 {Ancora nessuna parola} one {# parola da ripassare} other {# parole da ripassare}}",
+    "checkIn": "Quiz di verifica",
+    "checkInEvery": "Ogni {days} giorni",
+    "lastSession": "Ultima sessione",
+    "lastSessionEmpty": "Dopo la prima chiacchierata, qui troverai un breve riepilogo."
   },
-  "practice": { "title": "Esercizi", "body": "Qui troverai il ripasso delle parole e i quiz di verifica." },
-  "progress": { "title": "Progressi", "body": "Qui troverai la tua mappa dei livelli QCER, da A1 a C2." },
+  "practice": {
+    "title": "Esercizi",
+    "body": "Qui troverai il ripasso delle parole e i quiz di verifica."
+  },
+  "progress": {
+    "title": "Progressi",
+    "ladder": "La tua scala dei livelli",
+    "locked": "bloccato",
+    "canDoTitle": "Cosa saprai fare al livello {level}",
+    "status": {
+      "not_seen": "Non ancora",
+      "practising": "In pratica",
+      "mastered": "Acquisito"
+    },
+    "source": "Basato sui descrittori QCER del Consiglio d'Europa."
+  },
   "profile": {
     "title": "Profilo",
     "signedInAs": "Accesso effettuato come",
     "interfaceLanguage": "Lingua dell'app",
     "kidsPreview": "Aspetto per bambini (anteprima)",
-    "signOut": "Esci"
+    "signOut": "Esci",
+    "plan": "Piano di studio",
+    "editPlan": "Modifica il piano di studio"
+  },
+  "onboarding": {
+    "metaTitle": "Crea il tuo piano",
+    "stepOf": "{current} di {total}",
+    "back": "Indietro",
+    "continue": "Continua",
+    "finish": "Inizia a imparare",
+    "saving": "Salvataggio…",
+    "about": {
+      "title": "Su di te",
+      "native": "La mia lingua",
+      "nativeHint": "L'app userà questa lingua e il tutor potrà aiutarti in questa lingua."
+    },
+    "plan": {
+      "title": "Il tuo piano di studio",
+      "target": "Voglio imparare",
+      "goal": "Perché stai imparando?",
+      "skills": "Su cosa vuoi concentrarti?",
+      "skillsHint": "scegli quante vuoi",
+      "daily": "Tempo al giorno",
+      "minutes": "{n} min"
+    },
+    "goals": {
+      "trip": "Un viaggio",
+      "work_study": "Lavoro o studio",
+      "exam": "Un esame",
+      "heritage": "Famiglia e origini",
+      "moving": "Trasferirmi all'estero",
+      "words": "Solo parole nuove"
+    },
+    "skills": {
+      "speaking": "Parlare",
+      "listening": "Ascoltare",
+      "reading": "Leggere",
+      "writing": "Scrivere"
+    },
+    "tutor": {
+      "title": "Scegli il tuo tutor",
+      "speaks": "Parla {language}",
+      "preview": "Ascolta {name}",
+      "previewUnavailable": "L'anteprima della voce non è disponibile in questo browser.",
+      "namesNote": "I nomi dei tutor seguono la lingua che impari: Giulia o Marco per l'italiano, Emma o James per l'inglese."
+    },
+    "start": {
+      "title": "Troviamo il tuo livello",
+      "body": "La tua prima chiacchierata con {name} è rilassata — nessun test. Parla e basta: {name} capirà da dove partire.",
+      "note": "Puoi cambiare il piano quando vuoi nel Profilo."
+    },
+    "errors": {
+      "generic": "Non siamo riusciti a salvare il piano. Riprova."
+    }
+  },
+  "session": {
+    "title": "Parla con {name}",
+    "body": "Le conversazioni vocali dal vivo con il tutor arrivano nella prossima fase.",
+    "back": "Torna alla home"
   }
 }

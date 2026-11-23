@@ -1,9 +1,28 @@
 {
   "common": {
-    "languageNames": { "en": "English", "sq": "Shqip", "it": "Italiano" },
+    "languageNames": {
+      "en": "English",
+      "sq": "Shqip",
+      "it": "Italiano"
+    },
     "partner": "In partnership with Discover Albania",
     "comingSoon": "Coming soon",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "estimate": {
+      "weeks": "At {minutes} min a day, about {count, plural, one {# week} other {# weeks}} to reach {level}.",
+      "months": "At {minutes} min a day, about {count, plural, one {# month} other {# months}} to reach {level}.",
+      "years": "At {minutes} min a day, about {count, plural, one {# year} other {# years}} to reach {level}."
+    },
+    "languages": {
+      "en": "English",
+      "it": "Italian",
+      "sq": "Albanian"
+    },
+    "languagesInline": {
+      "en": "English",
+      "it": "Italian",
+      "sq": "Albanian"
+    }
   },
   "login": {
     "metaTitle": "Sign in",
@@ -32,7 +51,9 @@
       "missingFields": "Please fill in every field.",
       "notConfigured": "Sign-in isn't set up yet: add the Supabase keys to .env.local.",
       "callback": "We couldn't finish signing you in. Please try again."
-    }
+    },
+    "demoHint": "Demo mode: Supabase isn't set up, so you can try the app with a local, throwaway account.",
+    "demoButton": "Try the demo"
   },
   "parent": {
     "metaTitle": "Parent sign-up",
@@ -50,16 +71,101 @@
   "home": {
     "greeting": "Hi, {name}!",
     "greetingNoName": "Hi there!",
-    "nextUp": "Next up: set up your learning plan",
-    "nextUpBody": "Pick the language you want to learn, your goals and your tutor. It takes about a minute."
+    "streakLabel": "Streak",
+    "streak": "{count, plural, one {# day} other {# days}}",
+    "towards": "On your way to {level}",
+    "stars": "{count} of {total} stars",
+    "upNext": "Coming up",
+    "talk": "Talk with {name}",
+    "talkKids": "Ready to chat?",
+    "talkMinutes": "{minutes} min conversation",
+    "placement": "First chat · finds your level",
+    "wordReview": "Word review",
+    "wordsDue": "{count, plural, =0 {No words yet} one {# word to review} other {# words to review}}",
+    "checkIn": "Check-in quiz",
+    "checkInEvery": "Every {days} days",
+    "lastSession": "Last session",
+    "lastSessionEmpty": "After your first chat, a short recap will appear here."
   },
-  "practice": { "title": "Practice", "body": "Word review and check-in quizzes will live here." },
-  "progress": { "title": "Progress", "body": "Your CEFR level map, from A1 to C2, will live here." },
+  "practice": {
+    "title": "Practice",
+    "body": "Word review and check-in quizzes will live here."
+  },
+  "progress": {
+    "title": "Progress",
+    "ladder": "Your level ladder",
+    "locked": "locked",
+    "canDoTitle": "What you'll be able to do at {level}",
+    "status": {
+      "not_seen": "Not yet",
+      "practising": "Practising",
+      "mastered": "Mastered"
+    },
+    "source": "Based on the Council of Europe's CEFR descriptors."
+  },
   "profile": {
     "title": "Profile",
     "signedInAs": "Signed in as",
     "interfaceLanguage": "App language",
     "kidsPreview": "Kids look (preview)",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "plan": "Learning plan",
+    "editPlan": "Edit learning plan"
+  },
+  "onboarding": {
+    "metaTitle": "Set up your plan",
+    "stepOf": "{current} of {total}",
+    "back": "Back",
+    "continue": "Continue",
+    "finish": "Start learning",
+    "saving": "Saving…",
+    "about": {
+      "title": "About you",
+      "native": "My language",
+      "nativeHint": "The app will use this language, and your tutor can help you in it."
+    },
+    "plan": {
+      "title": "Your learning plan",
+      "target": "I want to learn",
+      "goal": "Why are you learning?",
+      "skills": "What do you want to focus on?",
+      "skillsHint": "pick any",
+      "daily": "Time each day",
+      "minutes": "{n} min"
+    },
+    "goals": {
+      "trip": "A trip",
+      "work_study": "Work or study",
+      "exam": "An exam",
+      "heritage": "Family & heritage",
+      "moving": "Moving abroad",
+      "words": "Just new words"
+    },
+    "skills": {
+      "speaking": "Speaking",
+      "listening": "Listening",
+      "reading": "Reading",
+      "writing": "Writing"
+    },
+    "tutor": {
+      "title": "Choose your tutor",
+      "speaks": "Speaks {language}",
+      "preview": "Hear {name}",
+      "previewUnavailable": "Voice preview isn't available in this browser.",
+      "namesNote": "Tutor names match the language you learn: Giulia or Marco for Italian, Emma or James for English."
+    },
+    "start": {
+      "title": "Let's find your level",
+      "body": "Your first chat with {name} is relaxed — no test. Just talk, and {name} will work out where you should start.",
+      "note": "You can change your plan anytime in Profile."
+    },
+    "errors": {
+      "generic": "We couldn't save your plan. Please try again."
+    }
+  },
+  "session": {
+    "title": "Talk with {name}",
+    "body": "Live voice conversations with your tutor arrive in the next build phase.",
+    "back": "Back home"
   }
 }

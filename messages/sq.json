@@ -1,9 +1,28 @@
 {
   "common": {
-    "languageNames": { "en": "English", "sq": "Shqip", "it": "Italiano" },
+    "languageNames": {
+      "en": "English",
+      "sq": "Shqip",
+      "it": "Italiano"
+    },
     "partner": "Në partneritet me Discover Albania",
     "comingSoon": "Së shpejti",
-    "skipToContent": "Kalo te përmbajtja"
+    "skipToContent": "Kalo te përmbajtja",
+    "estimate": {
+      "weeks": "Me {minutes} min në ditë, rreth {count, plural, one {# javë} other {# javë}} për të arritur {level}.",
+      "months": "Me {minutes} min në ditë, rreth {count, plural, one {# muaj} other {# muaj}} për të arritur {level}.",
+      "years": "Me {minutes} min në ditë, rreth {count, plural, one {# vit} other {# vjet}} për të arritur {level}."
+    },
+    "languages": {
+      "en": "Anglisht",
+      "it": "Italisht",
+      "sq": "Shqip"
+    },
+    "languagesInline": {
+      "en": "anglisht",
+      "it": "italisht",
+      "sq": "shqip"
+    }
   },
   "login": {
     "metaTitle": "Hyr",
@@ -32,7 +51,9 @@
       "missingFields": "Plotëso të gjitha fushat.",
       "notConfigured": "Hyrja nuk është konfiguruar ende: shto çelësat e Supabase në .env.local.",
       "callback": "Nuk arritëm të përfundojmë hyrjen. Provo përsëri."
-    }
+    },
+    "demoHint": "Modaliteti demo: Supabase nuk është konfiguruar, ndaj mund ta provosh aplikacionin me një llogari lokale të përkohshme.",
+    "demoButton": "Provo demon"
   },
   "parent": {
     "metaTitle": "Regjistrimi i prindit",
@@ -50,16 +71,101 @@
   "home": {
     "greeting": "Përshëndetje, {name}!",
     "greetingNoName": "Përshëndetje!",
-    "nextUp": "Hapi tjetër: krijo planin tënd të mësimit",
-    "nextUpBody": "Zgjidh gjuhën që do të mësosh, qëllimet dhe mësuesin. Zgjat rreth një minutë."
+    "streakLabel": "Seri ditësh",
+    "streak": "{count, plural, one {# ditë} other {# ditë}}",
+    "towards": "Drejt nivelit {level}",
+    "stars": "{count} nga {total} yje",
+    "upNext": "Hapat e ardhshëm",
+    "talk": "Fol me {name}",
+    "talkKids": "Gati për të biseduar?",
+    "talkMinutes": "Bisedë {minutes} min",
+    "placement": "Biseda e parë · gjen nivelin tënd",
+    "wordReview": "Përsërit fjalët",
+    "wordsDue": "{count, plural, =0 {Ende pa fjalë} one {# fjalë për të përsëritur} other {# fjalë për të përsëritur}}",
+    "checkIn": "Kuiz kontrolli",
+    "checkInEvery": "Çdo {days} ditë",
+    "lastSession": "Seanca e fundit",
+    "lastSessionEmpty": "Pas bisedës së parë, këtu do të shfaqet një përmbledhje e shkurtër."
   },
-  "practice": { "title": "Ushtrime", "body": "Përsëritja e fjalëve dhe kuizet e kontrollit do të jenë këtu." },
-  "progress": { "title": "Përparimi", "body": "Harta jote e niveleve CEFR, nga A1 në C2, do të jetë këtu." },
+  "practice": {
+    "title": "Ushtrime",
+    "body": "Përsëritja e fjalëve dhe kuizet e kontrollit do të jenë këtu."
+  },
+  "progress": {
+    "title": "Përparimi",
+    "ladder": "Shkallët e nivelit",
+    "locked": "e kyçur",
+    "canDoTitle": "Çfarë do të dish të bësh në {level}",
+    "status": {
+      "not_seen": "Ende jo",
+      "practising": "Në praktikë",
+      "mastered": "E zotëruar"
+    },
+    "source": "Bazuar në përshkruesit CEFR të Këshillit të Evropës."
+  },
   "profile": {
     "title": "Profili",
     "signedInAs": "Ke hyrë si",
     "interfaceLanguage": "Gjuha e aplikacionit",
     "kidsPreview": "Pamja për fëmijë (paraparje)",
-    "signOut": "Dil"
+    "signOut": "Dil",
+    "plan": "Plani i mësimit",
+    "editPlan": "Ndrysho planin e mësimit"
+  },
+  "onboarding": {
+    "metaTitle": "Krijo planin tënd",
+    "stepOf": "{current} nga {total}",
+    "back": "Mbrapa",
+    "continue": "Vazhdo",
+    "finish": "Fillo të mësosh",
+    "saving": "Po ruhet…",
+    "about": {
+      "title": "Rreth teje",
+      "native": "Gjuha ime",
+      "nativeHint": "Aplikacioni do të jetë në këtë gjuhë dhe mësuesi mund të të ndihmojë në të."
+    },
+    "plan": {
+      "title": "Plani yt i mësimit",
+      "target": "Dua të mësoj",
+      "goal": "Pse po mëson?",
+      "skills": "Në çfarë do të përqendrohesh?",
+      "skillsHint": "zgjidh sa të duash",
+      "daily": "Koha çdo ditë",
+      "minutes": "{n} min"
+    },
+    "goals": {
+      "trip": "Një udhëtim",
+      "work_study": "Punë ose studime",
+      "exam": "Një provim",
+      "heritage": "Familja & origjina",
+      "moving": "Shpërngulje jashtë",
+      "words": "Thjesht fjalë të reja"
+    },
+    "skills": {
+      "speaking": "Të folurit",
+      "listening": "Të dëgjuarit",
+      "reading": "Të lexuarit",
+      "writing": "Të shkruarit"
+    },
+    "tutor": {
+      "title": "Zgjidh mësuesin",
+      "speaks": "Flet {language}",
+      "preview": "Dëgjo {name}",
+      "previewUnavailable": "Paraparja e zërit nuk mbështetet në këtë shfletues.",
+      "namesNote": "Emrat e mësuesve përputhen me gjuhën që mëson: Giulia ose Marco për italishten, Emma ose James për anglishten."
+    },
+    "start": {
+      "title": "Le të gjejmë nivelin tënd",
+      "body": "Biseda jote e parë me {name} është e qetë — pa test. Thjesht fol dhe {name} do të kuptojë nga duhet të fillosh.",
+      "note": "Mund ta ndryshosh planin kurdo te Profili."
+    },
+    "errors": {
+      "generic": "Nuk arritëm ta ruajmë planin. Provo përsëri."
+    }
+  },
+  "session": {
+    "title": "Fol me {name}",
+    "body": "Bisedat e drejtpërdrejta me zë me mësuesin vijnë në fazën e ardhshme.",
+    "back": "Kthehu në kreu"
   }
 }

@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { AGE_GROUPS, type AgeGroup } from "@/config/app";
 import { routing } from "@/i18n/routing";
+import { clearDemo, isDemoMode, writeDemo } from "@/lib/demo";
 import { createClient } from "@/lib/supabase/server";
 
 export type AuthState = { error?: string; notice?: string } | undefined;
@@ -68,8 +69,24 @@ export async function emailAuth(_prev: AuthState, formData: FormData): Promise<A
   redirect(`/${locale}/home`);
 }
 
+/** Dev only, when Supabase isn't configured: a throwaway local account. */
+export async function startDemo(formData: FormData) {
+  const locale = cleanLocale(formData.get("locale"));
+  if (!isDemoMode()) redirect(`/${locale}/login`);
+  await writeDemo({
+    id: "demo",
+    email: "demo@localhost",
+    displayName: "Demo",
+    ageGroup: null,
+    nativeLanguage: locale,
+    learner: null,
+  });
+  redirect(`/${locale}/onboarding`);
+}
+
 export async function signOut(formData: FormData) {
   const locale = cleanLocale(formData.get("locale"));
+  if (isDemoMode()) await clearDemo();
   const supabase = await createClient();
   await supabase?.auth.signOut();
   redirect(`/${locale}/login`);
