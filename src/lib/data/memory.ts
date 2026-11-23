@@ -4,7 +4,8 @@ import type { SkillStatus } from "@/lib/types";
 import { mergeStatus, type LearningStore, type StoredAttempt, type StoredSession, type VocabItem } from "./store";
 
 /**
- * Demo-mode store: lives in the dev server's memory (lost on restart).
+ * Demo-mode store: lives in server memory (lost on restart; on serverless
+ * hosting each instance has its own copy, so demo data can reset).
  * Kept on globalThis so hot reloads don't wipe it.
  */
 type Mem = {

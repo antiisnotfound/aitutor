@@ -51,7 +51,7 @@ export interface AiProvider {
 
 export function getAiProvider(): AiProvider {
   if (process.env.OPENAI_API_KEY) return openaiProvider;
-  if (process.env.NODE_ENV !== "production") return mockProvider;
+  if (process.env.NODE_ENV !== "production" || process.env.DEMO_MODE === "1") return mockProvider;
   throw new Error("OPENAI_API_KEY is not set");
 }
 

@@ -19,6 +19,10 @@ Without Supabase keys the app runs in **demo mode** (development only): the logi
 Without `OPENAI_API_KEY`, development uses a scripted demo tutor (browser speech, no voice recognition)
 so the whole call → summary loop can be clicked through.
 
+## Deploying (Vercel)
+Import the GitHub repo in Vercel (framework: Next.js, defaults are fine) and add the variables from
+`.env.example`. Without Supabase/OpenAI keys, set `DEMO_MODE=1` to get the scripted demo on the live site.
+
 ## Supabase setup (one-time)
 1. Create a project at supabase.com. Copy **Project URL**, **Publishable key** and **Secret key** into `.env.local`.
 2. SQL editor → run each file in `supabase/migrations/` in order (`0001_…` to `0004_…`).

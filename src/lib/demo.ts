@@ -6,7 +6,7 @@ import type { DemoState } from "@/lib/types";
 /**
  * Demo mode: local development without Supabase keys.
  * The whole "account" lives in one cookie so every screen can be tried.
- * Never active in production builds.
+ * Off in production unless the deployment sets DEMO_MODE=1.
  */
 export { isDemoMode };
 
@@ -23,7 +23,7 @@ export async function readDemo(): Promise<DemoState | null> {
 
 export async function writeDemo(state: DemoState) {
   (await cookies()).set(DEMO_COOKIE, JSON.stringify(state), {
-    path: "/", httpOnly: true, sameSite: "lax", maxAge: 60 * 60 * 24 * 30,
+    path: "/", httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", maxAge: 60 * 60 * 24 * 30,
   });
 }
 
