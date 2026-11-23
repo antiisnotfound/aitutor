@@ -49,7 +49,7 @@
       "invalid": "Email-i ose fjalëkalimi është i pasaktë.",
       "weakPassword": "Përdor të paktën 8 karaktere për fjalëkalimin.",
       "missingFields": "Plotëso të gjitha fushat.",
-      "notConfigured": "Hyrja nuk është konfiguruar ende: shto çelësat e Supabase në .env.local.",
+      "notConfigured": "Hyrja nuk është ende e disponueshme. Provo përsëri më vonë.",
       "callback": "Nuk arritëm të përfundojmë hyrjen. Provo përsëri."
     },
     "demoHint": "Modaliteti demo: Supabase nuk është konfiguruar, ndaj mund ta provosh aplikacionin me një llogari lokale të përkohshme.",

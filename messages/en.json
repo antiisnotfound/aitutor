@@ -49,7 +49,7 @@
       "invalid": "Email or password is incorrect.",
       "weakPassword": "Use at least 8 characters for your password.",
       "missingFields": "Please fill in every field.",
-      "notConfigured": "Sign-in isn't set up yet: add the Supabase keys to .env.local.",
+      "notConfigured": "Sign-in isn't available yet. Please try again later.",
       "callback": "We couldn't finish signing you in. Please try again."
     },
     "demoHint": "Demo mode: Supabase isn't set up, so you can try the app with a local, throwaway account.",
