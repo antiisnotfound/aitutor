@@ -15,10 +15,12 @@ npm run dev                  # http://localhost:3000
 ```
 Without Supabase keys the app runs in **demo mode** (development only): the login screen offers
 "Try the demo", which creates a throwaway local account stored in a cookie, so every screen can be tried.
+Without `OPENAI_API_KEY`, development uses a scripted demo tutor (browser speech, no voice recognition)
+so the whole call → summary loop can be clicked through.
 
 ## Supabase setup (one-time)
-1. Create a project at supabase.com. Copy **Project URL** and **Publishable key** into `.env.local`.
-2. SQL editor → run each file in `supabase/migrations/` in order (`0001_…`, `0002_…`).
+1. Create a project at supabase.com. Copy **Project URL**, **Publishable key** and **Secret key** into `.env.local`.
+2. SQL editor → run each file in `supabase/migrations/` in order (`0001_…`, `0002_…`, `0003_…`).
 3. Auth → URL configuration: Site URL `http://localhost:3000`, add redirect URL `http://localhost:3000/auth/callback`.
 4. Auth → Providers → Google: enable, paste the Google OAuth client ID/secret
    (Google Cloud console → OAuth client, authorised redirect URI = the callback URL Supabase shows).
@@ -32,6 +34,11 @@ Without Supabase keys the app runs in **demo mode** (development only): the logi
 | `src/lib/learning/` | Time-to-next-level estimate, level progress from the skill map |
 | `src/lib/user.ts` | Current user + active learner profile + skill map (Supabase or demo) |
 | `src/app/[locale]/onboarding` | 4-step onboarding wizard and save action |
+| `src/lib/ai/` | **AI adapter** (the only place that talks to a vendor): OpenAI + mock providers, tutor prompt, tools |
+| `src/lib/ai/client/` | Browser side of the live call: OpenAI WebRTC transport + mock transport |
+| `src/lib/data/` | Sessions, skill map, vocabulary, usage storage (Supabase or demo memory) |
+| `src/app/api/session/` | Start (hidden goal + realtime key), caption translation, end (assessment + saves) |
+| `src/app/[locale]/(focus)/session` | Live video-call screen and session summary |
 | `src/i18n/` + `messages/*.json` | Locales and UI strings |
 | `src/proxy.ts` | Locale routing, session refresh, signed-in/out redirects |
 | `src/lib/supabase/` | Server + proxy Supabase clients |

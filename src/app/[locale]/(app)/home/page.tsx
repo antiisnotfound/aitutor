@@ -1,11 +1,13 @@
 import { cookies } from "next/headers";
-import { getTranslations } from "next-intl/server";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { ASSESSMENT, SESSION } from "@/config/app";
 import { TUTORS } from "@/config/learning";
 import { initLocale } from "@/i18n/locale";
 import { Link } from "@/i18n/navigation";
 import { estimateToNextLevel } from "@/lib/learning/estimate";
+import { getStore } from "@/lib/data/store";
 import { levelProgress } from "@/lib/learning/progress";
+import { streakDays } from "@/lib/learning/streak";
 import { THEME_COOKIE, themeFor } from "@/lib/theme";
 import { getCurrentUser, getSkillMap } from "@/lib/user";
 
@@ -33,10 +35,14 @@ export default async function HomePage({ params }: PageProps<"/[locale]/home">) 
   const tutorName = TUTORS[learner.targetLanguage][learner.tutorGender];
   const firstName = user.displayName?.split(" ")[0];
 
-  // Phase 3+ fills these from sessions and the vocabulary queue.
-  const streakDays = 0;
-  const wordsDue = 0;
-  const lastSession = null;
+  const store = await getStore();
+  const [times, vocab, [lastSession]] = await Promise.all([
+    store.completedSessionTimes(learner.id, 60),
+    store.vocabularyStats(learner.id),
+    store.recentSessions(learner.id, 1),
+  ]);
+  const streak = streakDays(times);
+  const format = await getFormatter();
 
   const stars = Math.round(lp.progress * 5);
 
@@ -49,7 +55,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]/home">) 
             <path d="M12 2s5 5 5 10a5 5 0 0 1-10 0c0-2 1-3.5 1-3.5S9 11 10.5 11C10.5 7 12 2 12 2z" />
           </svg>
           <span className="sr-only">{t("streakLabel")}: </span>
-          {t("streak", { count: streakDays })}
+          {t("streak", { count: streak })}
         </p>
       </header>
 
@@ -128,7 +134,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]/home">) 
       <div className="grid grid-cols-2 gap-3">
         <Link href="/practice" className="rounded-card border border-line bg-surface p-4 hover:border-link">
           <span className="block font-bold">{t("wordReview")}</span>
-          <span className="mt-1 block text-sm text-muted">{t("wordsDue", { count: wordsDue })}</span>
+          <span className="mt-1 block text-sm text-muted">
+            {vocab.total === 0 ? t("wordsNone") : t("wordsDue", { due: vocab.due, total: vocab.total })}
+          </span>
         </Link>
         <Link href="/practice" className="rounded-card border border-line bg-surface p-4 hover:border-link">
           <span className="block font-bold">{t("checkIn")}</span>
@@ -138,8 +146,24 @@ export default async function HomePage({ params }: PageProps<"/[locale]/home">) 
 
       {/* Last session recap */}
       <section aria-labelledby="last-title" className="rounded-card border border-line p-5">
-        <h2 id="last-title" className="font-bold">{t("lastSession")}</h2>
-        <p className="mt-1 text-sm text-muted">{lastSession ?? t("lastSessionEmpty")}</p>
+        <div className="flex items-baseline justify-between gap-2">
+          <h2 id="last-title" className="font-bold">{t("lastSession")}</h2>
+          {lastSession && (
+            <span className="text-xs text-muted">{format.relativeTime(new Date(lastSession.startedAt))}</span>
+          )}
+        </div>
+        {lastSession?.summary ? (
+          <>
+            <ul className="mt-2 flex list-disc flex-col gap-1 pl-5 text-sm">
+              {lastSession.summary.learned.slice(0, 2).map((x, i) => <li key={i}>{x}</li>)}
+            </ul>
+            <Link href={`/session/${lastSession.id}/summary`} className="mt-2 inline-block text-sm font-semibold text-link underline underline-offset-4">
+              {t("seeSummary")}
+            </Link>
+          </>
+        ) : (
+          <p className="mt-1 text-sm text-muted">{t("lastSessionEmpty")}</p>
+        )}
       </section>
     </div>
   );

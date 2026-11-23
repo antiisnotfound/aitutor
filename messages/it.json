@@ -81,11 +81,13 @@
     "talkMinutes": "Conversazione di {minutes} min",
     "placement": "Prima chiacchierata · trova il tuo livello",
     "wordReview": "Ripasso parole",
-    "wordsDue": "{count, plural, =0 {Ancora nessuna parola} one {# parola da ripassare} other {# parole da ripassare}}",
+    "wordsDue": "{due, plural, =0 {Prossimo ripasso domani} one {# parola da ripassare} other {# parole da ripassare}} · {total} salvate",
     "checkIn": "Quiz di verifica",
     "checkInEvery": "Ogni {days} giorni",
     "lastSession": "Ultima sessione",
-    "lastSessionEmpty": "Dopo la prima chiacchierata, qui troverai un breve riepilogo."
+    "lastSessionEmpty": "Dopo la prima chiacchierata, qui troverai un breve riepilogo.",
+    "wordsNone": "Ancora nessuna parola",
+    "seeSummary": "Vedi il riepilogo"
   },
   "practice": {
     "title": "Esercizi",
@@ -163,9 +165,64 @@
       "generic": "Non siamo riusciti a salvare il piano. Riprova."
     }
   },
-  "session": {
-    "title": "Parla con {name}",
-    "body": "Le conversazioni vocali dal vivo con il tutor arrivano nella prossima fase.",
-    "back": "Torna alla home"
+  "live": {
+    "metaTitle": "Sessione dal vivo",
+    "backHome": "Torna alla home",
+    "lobbyTitle": "Parla con {name}",
+    "placementTitle": "La tua prima chiacchierata con {name}",
+    "practiceBody": "Nessun copione: parla di quello che vuoi. {name} ti aiuterà strada facendo.",
+    "placementBody": "Una chiacchierata rilassata — nessun test. Parla e {name} capirà da dove partire.",
+    "length": "Durata",
+    "lengthMinutes": "{minutes} min",
+    "lengthOpen": "Libera · fino a {max} min",
+    "tipMic": "Tieni premuto il microfono per parlare — oppure toccalo una volta per iniziare e di nuovo per inviare.",
+    "tipBridge": "Bloccato? Tocca “Dillo in {native}” e parla nella tua lingua.",
+    "tipCaptions": "I sottotitoli con traduzione sono attivi; puoi disattivarli con CC.",
+    "mockNotice": "Tutor demo (senza chiave OpenAI): segue un breve copione e tenendo premuto il microfono invia la risposta del copione invece di riconoscere la tua voce.",
+    "start": "Inizia la chiamata",
+    "retry": "Riprova",
+    "connecting": "Connessione…",
+    "videoLabel": "Videochiamata con {name}",
+    "timerLabel": "Tempo",
+    "timeLeft": "ancora {time}",
+    "you": "Tu",
+    "almost": "Quasi!",
+    "youSaid": "Hai detto:",
+    "dismiss": "Chiudi la correzione",
+    "chunks": "Frase in parti",
+    "sayAgain": "Tieni premuto il microfono e ripetilo.",
+    "bridge": "Dillo in {native}",
+    "bridgeOn": "Prossima: {native}",
+    "type": "Scrivi",
+    "typePlaceholder": "Scrivi un messaggio…",
+    "send": "Invia",
+    "captions": "CC",
+    "holdToTalk": "Tieni premuto per parlare",
+    "listening": "Ti ascolto… rilascia per inviare",
+    "listeningBridge": "Ti ascolto in {native}… rilascia per inviare",
+    "endCall": "Chiudi la chiamata",
+    "controls": "Controlli della chiamata",
+    "ending": "Salvataggio della sessione…",
+    "errors": {
+      "micDenied": "Serve il microfono per parlare. Consentilo nelle impostazioni del browser e riprova.",
+      "startFailed": "Non siamo riusciti ad avviare la chiamata. Riprova.",
+      "connectionLost": "La connessione si è interrotta.",
+      "endFailed": "Non siamo riusciti a salvare la sessione. Controlla la connessione e riprova."
+    }
+  },
+  "summary": {
+    "metaTitle": "Riepilogo della sessione",
+    "title": "Ottima sessione!",
+    "placementDone": "Grazie! Ora {name} sa da dove partire con te.",
+    "minutesLabel": "minuti",
+    "wordsLabel": "parole nuove",
+    "streakLabel": "giorni di fila",
+    "learned": "Cosa hai imparato",
+    "keepInMind": "Da ricordare",
+    "newWords": "Parole nuove",
+    "addedToReview": "Aggiunte al ripasso",
+    "noSummary": "Questa volta non siamo riusciti a scrivere il riepilogo, ma la conversazione è stata salvata.",
+    "reviewNow": "Ripassa ora",
+    "backHome": "Torna alla home"
   }
 }

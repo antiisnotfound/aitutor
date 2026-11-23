@@ -81,11 +81,13 @@
     "talkMinutes": "{minutes} min conversation",
     "placement": "First chat · finds your level",
     "wordReview": "Word review",
-    "wordsDue": "{count, plural, =0 {No words yet} one {# word to review} other {# words to review}}",
+    "wordsDue": "{due, plural, =0 {Next review tomorrow} one {# word due} other {# words due}} · {total} saved",
     "checkIn": "Check-in quiz",
     "checkInEvery": "Every {days} days",
     "lastSession": "Last session",
-    "lastSessionEmpty": "After your first chat, a short recap will appear here."
+    "lastSessionEmpty": "After your first chat, a short recap will appear here.",
+    "wordsNone": "No words yet",
+    "seeSummary": "See full summary"
   },
   "practice": {
     "title": "Practice",
@@ -163,9 +165,64 @@
       "generic": "We couldn't save your plan. Please try again."
     }
   },
-  "session": {
-    "title": "Talk with {name}",
-    "body": "Live voice conversations with your tutor arrive in the next build phase.",
-    "back": "Back home"
+  "live": {
+    "metaTitle": "Live session",
+    "backHome": "Back home",
+    "lobbyTitle": "Talk with {name}",
+    "placementTitle": "Your first chat with {name}",
+    "practiceBody": "No script: talk about anything you like. {name} will help along the way.",
+    "placementBody": "A relaxed chat — no test. Just talk and {name} will find the right place to start.",
+    "length": "Session length",
+    "lengthMinutes": "{minutes} min",
+    "lengthOpen": "Open · up to {max} min",
+    "tipMic": "Hold the mic to talk — or tap once to start and again to send.",
+    "tipBridge": "Stuck? Tap “Say it in {native}” and speak your own language.",
+    "tipCaptions": "Captions with translation are on by default; toggle them with CC.",
+    "mockNotice": "Demo tutor (no OpenAI key): it plays a short script, and holding the mic sends the scripted answer instead of recognising your voice.",
+    "start": "Start call",
+    "retry": "Try again",
+    "connecting": "Connecting…",
+    "videoLabel": "Video call with {name}",
+    "timerLabel": "Time",
+    "timeLeft": "{time} left",
+    "you": "You",
+    "almost": "Almost!",
+    "youSaid": "You said:",
+    "dismiss": "Dismiss correction",
+    "chunks": "Phrase in parts",
+    "sayAgain": "Hold the mic and say it again.",
+    "bridge": "Say it in {native}",
+    "bridgeOn": "Next: {native}",
+    "type": "Type",
+    "typePlaceholder": "Type a message…",
+    "send": "Send",
+    "captions": "CC",
+    "holdToTalk": "Hold to talk",
+    "listening": "Listening… release to send",
+    "listeningBridge": "Listening in {native}… release to send",
+    "endCall": "End call",
+    "controls": "Call controls",
+    "ending": "Saving your session…",
+    "errors": {
+      "micDenied": "We need your microphone to talk. Allow it in your browser settings and try again.",
+      "startFailed": "We couldn't start the call. Please try again.",
+      "connectionLost": "The connection was lost.",
+      "endFailed": "We couldn't save the session. Check your connection and try again."
+    }
+  },
+  "summary": {
+    "metaTitle": "Session summary",
+    "title": "Great session!",
+    "placementDone": "Thanks! {name} now knows where to start with you.",
+    "minutesLabel": "minutes",
+    "wordsLabel": "new words",
+    "streakLabel": "day streak",
+    "learned": "What you learned",
+    "keepInMind": "Keep in mind",
+    "newWords": "New words",
+    "addedToReview": "Added to your review",
+    "noSummary": "We couldn't write the summary this time, but your conversation was saved.",
+    "reviewNow": "Review now",
+    "backHome": "Back home"
   }
 }

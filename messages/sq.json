@@ -81,11 +81,13 @@
     "talkMinutes": "Bisedë {minutes} min",
     "placement": "Biseda e parë · gjen nivelin tënd",
     "wordReview": "Përsërit fjalët",
-    "wordsDue": "{count, plural, =0 {Ende pa fjalë} one {# fjalë për të përsëritur} other {# fjalë për të përsëritur}}",
+    "wordsDue": "{due, plural, =0 {Përsëritja tjetër nesër} one {# fjalë për sot} other {# fjalë për sot}} · {total} të ruajtura",
     "checkIn": "Kuiz kontrolli",
     "checkInEvery": "Çdo {days} ditë",
     "lastSession": "Seanca e fundit",
-    "lastSessionEmpty": "Pas bisedës së parë, këtu do të shfaqet një përmbledhje e shkurtër."
+    "lastSessionEmpty": "Pas bisedës së parë, këtu do të shfaqet një përmbledhje e shkurtër.",
+    "wordsNone": "Ende pa fjalë",
+    "seeSummary": "Shiko përmbledhjen"
   },
   "practice": {
     "title": "Ushtrime",
@@ -163,9 +165,64 @@
       "generic": "Nuk arritëm ta ruajmë planin. Provo përsëri."
     }
   },
-  "session": {
-    "title": "Fol me {name}",
-    "body": "Bisedat e drejtpërdrejta me zë me mësuesin vijnë në fazën e ardhshme.",
-    "back": "Kthehu në kreu"
+  "live": {
+    "metaTitle": "Seanca live",
+    "backHome": "Kthehu në kreu",
+    "lobbyTitle": "Fol me {name}",
+    "placementTitle": "Biseda jote e parë me {name}",
+    "practiceBody": "Pa skenar: fol për çfarë të duash. {name} do të të ndihmojë gjatë rrugës.",
+    "placementBody": "Një bisedë e qetë — pa test. Thjesht fol dhe {name} do të gjejë nga të fillosh.",
+    "length": "Kohëzgjatja",
+    "lengthMinutes": "{minutes} min",
+    "lengthOpen": "E hapur · deri {max} min",
+    "tipMic": "Mbaj mikrofonin për të folur — ose shtype një herë për të filluar dhe sërish për ta dërguar.",
+    "tipBridge": "Ngece? Shtyp “Thuaje në {native}” dhe fol gjuhën tënde.",
+    "tipCaptions": "Titrat me përkthim janë të ndezura; i fik me CC.",
+    "mockNotice": "Mësues demo (pa çelës OpenAI): luan një skenar të shkurtër dhe mbajtja e mikrofonit dërgon përgjigjen e skenarit, pa e njohur zërin tënd.",
+    "start": "Fillo thirrjen",
+    "retry": "Provo përsëri",
+    "connecting": "Po lidhet…",
+    "videoLabel": "Video-thirrje me {name}",
+    "timerLabel": "Koha",
+    "timeLeft": "edhe {time}",
+    "you": "Ti",
+    "almost": "Pothuajse!",
+    "youSaid": "Ti the:",
+    "dismiss": "Mbyll korrigjimin",
+    "chunks": "Fraza në pjesë",
+    "sayAgain": "Mbaj mikrofonin dhe thuaje sërish.",
+    "bridge": "Thuaje në {native}",
+    "bridgeOn": "Tjetra: {native}",
+    "type": "Shkruaj",
+    "typePlaceholder": "Shkruaj një mesazh…",
+    "send": "Dërgo",
+    "captions": "CC",
+    "holdToTalk": "Mbaje për të folur",
+    "listening": "Po dëgjoj… lëshoje për ta dërguar",
+    "listeningBridge": "Po dëgjoj në {native}… lëshoje për ta dërguar",
+    "endCall": "Mbyll thirrjen",
+    "controls": "Kontrollet e thirrjes",
+    "ending": "Po ruhet seanca…",
+    "errors": {
+      "micDenied": "Na duhet mikrofoni për të folur. Lejoje te cilësimet e shfletuesit dhe provo përsëri.",
+      "startFailed": "Nuk arritëm ta nisim thirrjen. Provo përsëri.",
+      "connectionLost": "Lidhja u ndërpre.",
+      "endFailed": "Nuk arritëm ta ruajmë seancën. Kontrollo lidhjen dhe provo përsëri."
+    }
+  },
+  "summary": {
+    "metaTitle": "Përmbledhja e seancës",
+    "title": "Seancë e shkëlqyer!",
+    "placementDone": "Faleminderit! {name} tani e di nga të fillojë me ty.",
+    "minutesLabel": "minuta",
+    "wordsLabel": "fjalë të reja",
+    "streakLabel": "ditë rresht",
+    "learned": "Çfarë mësove",
+    "keepInMind": "Mbaj mend",
+    "newWords": "Fjalë të reja",
+    "addedToReview": "U shtuan te përsëritja",
+    "noSummary": "Këtë herë nuk arritëm ta shkruajmë përmbledhjen, por biseda u ruajt.",
+    "reviewNow": "Përsërit tani",
+    "backHome": "Kthehu në kreu"
   }
 }

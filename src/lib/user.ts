@@ -2,6 +2,7 @@ import "server-only";
 import { connection } from "next/server";
 import { cache } from "react";
 import { UI_LOCALES, type UiLocale } from "@/config/app";
+import { getStore } from "@/lib/data/store";
 import { readDemo } from "@/lib/demo";
 import { createClient } from "@/lib/supabase/server";
 import type { CurrentUser, LearnerProfile, SkillStatus } from "@/lib/types";
@@ -67,12 +68,5 @@ export const getCurrentUser = cache(async (): Promise<CurrentUser | null> => {
 
 /** Can-do id → status for a learner. Missing ids are "not seen". */
 export async function getSkillMap(learnerId: string): Promise<Record<string, SkillStatus>> {
-  if (await readDemo()) return {};
-  const supabase = await createClient();
-  if (!supabase) return {};
-  const { data } = await supabase
-    .from("skill_map_entries")
-    .select("cando_id, status")
-    .eq("learner_profile_id", learnerId);
-  return Object.fromEntries((data ?? []).map((r) => [r.cando_id, r.status as SkillStatus]));
+  return (await getStore()).getSkillMap(learnerId);
 }
