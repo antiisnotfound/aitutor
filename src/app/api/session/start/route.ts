@@ -21,13 +21,21 @@ export async function POST(req: Request) {
 
   try {
     const store = await getStore();
-    const [skillMap, recent] = await Promise.all([store.getSkillMap(learner.id), store.recentSessions(learner.id, 3)]);
+    const [skillMap, recent, lastCheckin] = await Promise.all([
+      store.getSkillMap(learner.id),
+      store.recentSessions(learner.id, 3),
+      store.lastAttempt(learner.id, "checkin", "graded"),
+    ]);
     const mode = learner.placementDone ? "practice" : "placement";
     const hiddenGoal = pickHiddenGoal({
       mode,
       skillMap,
       focusSkills: learner.focusSkills,
-      recentKeepInMind: recent.flatMap((s) => s.summary?.keepInMind ?? []),
+      // Weak spots from the latest check-in quiz come first, then recent session tips.
+      recentKeepInMind: [
+        ...(lastCheckin?.feedback?.toWorkOn ?? []).slice(0, 2).map((w) => `the word/phrase "${w}"`),
+        ...recent.flatMap((s) => s.summary?.keepInMind ?? []),
+      ],
     });
 
     const session = await store.createSession({

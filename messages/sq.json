@@ -83,15 +83,41 @@
     "wordReview": "Përsërit fjalët",
     "wordsDue": "{due, plural, =0 {Përsëritja tjetër nesër} one {# fjalë për sot} other {# fjalë për sot}} · {total} të ruajtura",
     "checkIn": "Kuiz kontrolli",
-    "checkInEvery": "Çdo {days} ditë",
     "lastSession": "Seanca e fundit",
     "lastSessionEmpty": "Pas bisedës së parë, këtu do të shfaqet një përmbledhje e shkurtër.",
     "wordsNone": "Ende pa fjalë",
-    "seeSummary": "Shiko përmbledhjen"
+    "seeSummary": "Shiko përmbledhjen",
+    "checkInDue": "Tani",
+    "checkInIn": "Pas {days, plural, one {# dite} other {# ditësh}}",
+    "levelComplete": "{level} u përfundua! Mësimet {next} vijnë së shpejti — vazhdo të bisedosh."
   },
   "practice": {
     "title": "Ushtrime",
-    "body": "Përsëritja e fjalëve dhe kuizet e kontrollit do të jenë këtu."
+    "seeResults": "Shiko rezultatet e fundit",
+    "review": {
+      "title": "Përsëritja e fjalëve",
+      "empty": "Ende pa fjalë — shtohen pas çdo bisede.",
+      "status": "{due, plural, =0 {Asgjë për sot} one {# fjalë për sot} other {# fjalë për sot}} · {total} të ruajtura",
+      "cta": "Përsërit tani",
+      "ctaAnyway": "Ushtrohu gjithsesi"
+    },
+    "checkin": {
+      "title": "Kuiz kontrolli",
+      "due": "Tani",
+      "dueIn": "I radhës pas {days, plural, one {# dite} other {# ditësh}}",
+      "last": "rezultati i fundit {score}",
+      "about": "{count} pyetje, rreth 10 min",
+      "cta": "Fillo kuizin",
+      "ctaEarly": "Bëje më herët"
+    },
+    "exam": {
+      "title": "Provimi i nivelit: A1",
+      "locked": "Hapet kur të zotërosh {percent}% të aftësive A1. Vazhdo të bisedosh!",
+      "cooldown": "Mund ta rimarrësh pas {days, plural, one {# dite} other {# ditësh}}. Ushtrohu pak më parë!",
+      "passed": "E kalove — të lumtë!",
+      "available": "Lexim, dëgjim, shkrim dhe të folur. Rreth 30 minuta.",
+      "cta": "Fillo provimin"
+    }
   },
   "progress": {
     "title": "Përparimi",
@@ -225,5 +251,116 @@
     "noSummary": "Këtë herë nuk arritëm ta shkruajmë përmbledhjen, por biseda u ruajt.",
     "reviewNow": "Përsërit tani",
     "backHome": "Kthehu në kreu"
+  },
+  "review": {
+    "metaTitle": "Përsëritja e fjalëve",
+    "title": "Përsëritja e fjalëve",
+    "back": "Mbrapa",
+    "left": "edhe {count}",
+    "word": "Fjalë",
+    "phrase": "Frazë",
+    "listen": "Dëgjo",
+    "recall": "E mban mend çfarë do të thotë?",
+    "show": "Shfaq përgjigjen",
+    "howWell": "Sa mirë e dije?",
+    "grades": {
+      "again": "Përsëri",
+      "hard": "Vështirë",
+      "good": "Mirë",
+      "easy": "Lehtë"
+    },
+    "finished": "{count, plural, one {# kartë e përsëritur} other {# karta të përsëritura}}!",
+    "finishedBody": "Punë e shkëlqyer. Çdo fjalë do të kthehet pak para se ta harrosh.",
+    "nothingDue": "Gjithçka në rregull",
+    "nothingDueBody": "Nuk ka fjalë për t'u përsëritur tani.",
+    "practiceAnyway": "Ushtro fjalët e ardhshme",
+    "error": "Nuk u ruajt. Provo përsëri."
+  },
+  "assessment": {
+    "back": "Mbrapa",
+    "start": "Fillo",
+    "preparing": "Po përgatitet…",
+    "partOf": "Pjesa {current} nga {total}",
+    "next": "Tjetra",
+    "previous": "Mbrapa",
+    "submit": "Përfundo dhe shiko rezultatin",
+    "submitAnyway": "{count, plural, one {# pyetje} other {# pyetje}} pa përgjigje — të përfundojmë gjithsesi?",
+    "grading": "Po vlerësohet…",
+    "play": "Luaj",
+    "playsLeft": "{count, plural, =0 {Nuk ka më dëgjime} one {Edhe # dëgjim} other {Edhe # dëgjime}}",
+    "reset": "Fillo nga e para",
+    "means": "Do të thotë",
+    "words": "{count} fjalë (synoni {min}–{max})",
+    "skills": {
+      "reading": "Lexim",
+      "listening": "Dëgjim",
+      "writing": "Shkrim",
+      "speaking": "Të folur"
+    },
+    "checkin": {
+      "title": "Kuiz kontrolli",
+      "intro": "Një kontroll i shpejtë i asaj që ke ushtruar së fundi: rreth 10 pyetje, rreth 10 minuta. Fjalët që gabon kthehen te përsëritja."
+    },
+    "levelup": {
+      "title": "Provimi i nivelit: A1",
+      "intro": "Trego çfarë di të bësh në A1 për të hapur nivelin tjetër. Katër pjesë, rreth 30 minuta. Merr kohën tënde.",
+      "parts": {
+        "reading": "2 tekste të shkurtra",
+        "listening": "2 regjistrime, secilin mund ta dëgjosh dy herë",
+        "writing": "një mesazh i shkurtër",
+        "speaking": "2 përgjigje të shkurtra me zë (ose shkruaji)"
+      },
+      "passRule": "Për të kaluar: {overall}% gjithsej dhe të paktën {min}% në çdo pjesë."
+    },
+    "instructions": {
+      "checkin": {
+        "reading": "Zgjidh përgjigjen e saktë.",
+        "listening": "Dëgjo dhe zgjidh çfarë do të thotë.",
+        "writing": "Vendosi fjalët në rendin e duhur.",
+        "speaking": "Të folur"
+      },
+      "levelup": {
+        "reading": "Lexo tekstin dhe zgjidh përgjigjen e saktë.",
+        "listening": "Dëgjo regjistrimin dhe zgjidh përgjigjen e saktë.",
+        "writing": "Shkrim",
+        "speaking": "Të folur — regjistro përgjigjet"
+      }
+    },
+    "speaking": {
+      "suggested": "Fol rreth {seconds} sekonda.",
+      "record": "Regjistro",
+      "recordAgain": "Regjistro përsëri",
+      "stop": "Ndalo",
+      "uploading": "Po dëgjojmë përgjigjen…",
+      "weHeard": "Dëgjuam:",
+      "typeInstead": "Shkruaje",
+      "recordInstead": "Regjistroje me zë",
+      "typeLabel": "Shkruaj përgjigjen",
+      "error": "Regjistrimi nuk funksionoi. Provo përsëri ose shkruaje përgjigjen."
+    },
+    "errors": {
+      "start": "Nuk u nis. Provo përsëri.",
+      "submit": "Nuk u dërgua. Kontrollo lidhjen dhe provo përsëri."
+    }
+  },
+  "results": {
+    "metaTitle": "Rezultatet",
+    "checkinTitle": "Rezultatet e kuizit",
+    "passedTitle": "E kalove A1! 🎉",
+    "notYetTitle": "Jo ende",
+    "overall": "Rezultati gjithsej",
+    "passed": "Kaloi",
+    "notPassed": "Nuk kaloi",
+    "rule": "Kalimi: {overall}% gjithsej dhe asnjë pjesë nën {min}%.",
+    "stars": "{count} nga 5 yje",
+    "bySkill": "Rezultati sipas aftësisë",
+    "toWorkOn": "Për t'u punuar më tej",
+    "weakSkill": "{skill}: nën minimumin — ushtro këtë më pas.",
+    "examiner": "Komentet e vlerësuesit",
+    "nextLevelSoon": "Mësimet A2 vijnë së shpejti. Niveli yt i ri u ruajt.",
+    "startNextLevel": "Fillo nivelin tjetër",
+    "practiseMore": "Ushtrohu me mësuesin",
+    "reviewWords": "Përsërit fjalët e gabuara",
+    "backToPractice": "Kthehu te Ushtrimet"
   }
 }

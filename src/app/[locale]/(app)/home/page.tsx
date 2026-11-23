@@ -1,10 +1,11 @@
 import { cookies } from "next/headers";
 import { getFormatter, getTranslations } from "next-intl/server";
-import { ASSESSMENT, SESSION } from "@/config/app";
-import { TUTORS } from "@/config/learning";
+import { SESSION } from "@/config/app";
+import { TUTORS, UNLOCKED_LEVELS } from "@/config/learning";
 import { initLocale } from "@/i18n/locale";
 import { Link } from "@/i18n/navigation";
 import { estimateToNextLevel } from "@/lib/learning/estimate";
+import { assessmentStatus } from "@/lib/assessment/status";
 import { getStore } from "@/lib/data/store";
 import { levelProgress } from "@/lib/learning/progress";
 import { streakDays } from "@/lib/learning/streak";
@@ -36,11 +37,13 @@ export default async function HomePage({ params }: PageProps<"/[locale]/home">) 
   const firstName = user.displayName?.split(" ")[0];
 
   const store = await getStore();
-  const [times, vocab, [lastSession]] = await Promise.all([
+  const [times, vocab, [lastSession], assessments] = await Promise.all([
     store.completedSessionTimes(learner.id, 60),
     store.vocabularyStats(learner.id),
     store.recentSessions(learner.id, 1),
+    assessmentStatus(learner),
   ]);
+  const levelDone = !lp.target || !UNLOCKED_LEVELS.includes(lp.target);
   const streak = streakDays(times);
   const format = await getFormatter();
 
@@ -86,7 +89,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]/home">) 
             <div className="h-full rounded-full bg-accent" style={{ width: `${Math.max(percent, 2)}%` }} />
           </div>
         )}
-        {estimate && (
+        {levelDone && (
+          <p className="mt-3 rounded-xl bg-surface-2 p-3 text-sm">{t("levelComplete", { level: learner.level, next: lp.target ?? "" })}</p>
+        )}
+        {estimate && !levelDone && (
           <p className="mt-3 text-sm text-muted">
             {tc(`estimate.${estimate.friendly.unit}`, {
               count: estimate.friendly.count,
@@ -140,7 +146,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]/home">) 
         </Link>
         <Link href="/practice" className="rounded-card border border-line bg-surface p-4 hover:border-link">
           <span className="block font-bold">{t("checkIn")}</span>
-          <span className="mt-1 block text-sm text-muted">{t("checkInEvery", { days: ASSESSMENT.checkInEveryDays })}</span>
+          <span className="mt-1 block text-sm text-muted">
+            {assessments.checkin.due ? t("checkInDue") : t("checkInIn", { days: assessments.checkin.dueInDays })}
+          </span>
         </Link>
       </div>
 

@@ -83,15 +83,41 @@
     "wordReview": "Word review",
     "wordsDue": "{due, plural, =0 {Next review tomorrow} one {# word due} other {# words due}} · {total} saved",
     "checkIn": "Check-in quiz",
-    "checkInEvery": "Every {days} days",
     "lastSession": "Last session",
     "lastSessionEmpty": "After your first chat, a short recap will appear here.",
     "wordsNone": "No words yet",
-    "seeSummary": "See full summary"
+    "seeSummary": "See full summary",
+    "checkInDue": "Due now",
+    "checkInIn": "In {days, plural, one {# day} other {# days}}",
+    "levelComplete": "{level} complete! {next} lessons are coming soon — keep chatting to stay sharp."
   },
   "practice": {
     "title": "Practice",
-    "body": "Word review and check-in quizzes will live here."
+    "seeResults": "See last results",
+    "review": {
+      "title": "Word review",
+      "empty": "No words yet — they're added after each chat.",
+      "status": "{due, plural, =0 {Nothing due} one {# word due} other {# words due}} · {total} saved",
+      "cta": "Review now",
+      "ctaAnyway": "Practise anyway"
+    },
+    "checkin": {
+      "title": "Check-in quiz",
+      "due": "Due now",
+      "dueIn": "Next in {days, plural, one {# day} other {# days}}",
+      "last": "last score {score}",
+      "about": "{count} questions, about 10 min",
+      "cta": "Start quiz",
+      "ctaEarly": "Take it early"
+    },
+    "exam": {
+      "title": "Level-up exam: A1",
+      "locked": "Unlocks when you've mastered {percent}% of the A1 skills. Keep chatting!",
+      "cooldown": "You can retake it in {days, plural, one {# day} other {# days}}. Practise a bit first!",
+      "passed": "Passed — well done!",
+      "available": "Reading, listening, writing and speaking. About 30 minutes.",
+      "cta": "Start exam"
+    }
   },
   "progress": {
     "title": "Progress",
@@ -225,5 +251,116 @@
     "noSummary": "We couldn't write the summary this time, but your conversation was saved.",
     "reviewNow": "Review now",
     "backHome": "Back home"
+  },
+  "review": {
+    "metaTitle": "Word review",
+    "title": "Word review",
+    "back": "Back",
+    "left": "{count} left",
+    "word": "Word",
+    "phrase": "Phrase",
+    "listen": "Listen",
+    "recall": "Do you remember what it means?",
+    "show": "Show answer",
+    "howWell": "How well did you know it?",
+    "grades": {
+      "again": "Again",
+      "hard": "Hard",
+      "good": "Good",
+      "easy": "Easy"
+    },
+    "finished": "{count, plural, one {# card} other {# cards}} reviewed!",
+    "finishedBody": "Great work. We'll bring each word back right before you'd forget it.",
+    "nothingDue": "All caught up",
+    "nothingDueBody": "No words are due right now.",
+    "practiceAnyway": "Practise upcoming words",
+    "error": "Couldn't save that. Try again."
+  },
+  "assessment": {
+    "back": "Back",
+    "start": "Start",
+    "preparing": "Preparing…",
+    "partOf": "Part {current} of {total}",
+    "next": "Next",
+    "previous": "Back",
+    "submit": "Finish and see my score",
+    "submitAnyway": "{count, plural, one {# question} other {# questions}} unanswered — finish anyway?",
+    "grading": "Scoring…",
+    "play": "Play",
+    "playsLeft": "{count, plural, =0 {No plays left} one {# play left} other {# plays left}}",
+    "reset": "Start again",
+    "means": "Means",
+    "words": "{count} words (aim for {min}–{max})",
+    "skills": {
+      "reading": "Reading",
+      "listening": "Listening",
+      "writing": "Writing",
+      "speaking": "Speaking"
+    },
+    "checkin": {
+      "title": "Check-in quiz",
+      "intro": "A quick check on what you've practised lately: about 10 questions, around 10 minutes. Words you miss go back into your review."
+    },
+    "levelup": {
+      "title": "Level-up exam: A1",
+      "intro": "Show what you can do at A1 to unlock the next level. Four parts, about 30 minutes. Take your time.",
+      "parts": {
+        "reading": "2 short texts",
+        "listening": "2 recordings, you can play each twice",
+        "writing": "a short message",
+        "speaking": "2 short spoken answers (or type them)"
+      },
+      "passRule": "To pass: {overall}% overall and at least {min}% in every part."
+    },
+    "instructions": {
+      "checkin": {
+        "reading": "Choose the right answer.",
+        "listening": "Listen and choose what it means.",
+        "writing": "Put the words in the right order.",
+        "speaking": "Speaking"
+      },
+      "levelup": {
+        "reading": "Read the text and choose the right answer.",
+        "listening": "Listen to the recording and choose the right answer.",
+        "writing": "Writing",
+        "speaking": "Speaking — record your answers"
+      }
+    },
+    "speaking": {
+      "suggested": "Speak for about {seconds} seconds.",
+      "record": "Record",
+      "recordAgain": "Record again",
+      "stop": "Stop",
+      "uploading": "Listening to your answer…",
+      "weHeard": "We heard:",
+      "typeInstead": "Type instead",
+      "recordInstead": "Record instead",
+      "typeLabel": "Type your answer",
+      "error": "Recording didn't work. Try again or type your answer."
+    },
+    "errors": {
+      "start": "Couldn't start. Please try again.",
+      "submit": "Couldn't submit. Check your connection and try again."
+    }
+  },
+  "results": {
+    "metaTitle": "Results",
+    "checkinTitle": "Check-in results",
+    "passedTitle": "You passed A1! 🎉",
+    "notYetTitle": "Not quite yet",
+    "overall": "Overall score",
+    "passed": "Passed",
+    "notPassed": "Not passed",
+    "rule": "Pass: {overall}% overall and no part under {min}%.",
+    "stars": "{count} of 5 stars",
+    "bySkill": "Score by skill",
+    "toWorkOn": "To work on next",
+    "weakSkill": "{skill}: below the minimum — practise this next.",
+    "examiner": "Examiner comments",
+    "nextLevelSoon": "A2 lessons are coming soon. Your new level is saved.",
+    "startNextLevel": "Start next level",
+    "practiseMore": "Practise with your tutor",
+    "reviewWords": "Review missed words",
+    "backToPractice": "Back to Practice"
   }
 }

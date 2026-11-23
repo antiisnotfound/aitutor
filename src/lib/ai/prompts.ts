@@ -150,3 +150,30 @@ export function transcriptForAssessment(transcript: TranscriptTurn[], events: Se
     ...(corrections.length ? ["", "Corrections shown:", ...corrections] : []),
   ].join("\n");
 }
+
+/** Instructions for rubric grading of a writing/speaking answer. */
+export function gradingInstructions(i: import("./index").ProductiveInput): string {
+  const T = LANGUAGE_NAME_EN[i.target as keyof typeof LANGUAGE_NAME_EN] ?? i.target;
+  const N = LANGUAGE_NAME_EN[i.native as keyof typeof LANGUAGE_NAME_EN] ?? i.native;
+  const rubric = i.rubric
+    .map((c) => `## ${c.id} — ${c.name}\n` + c.bands.map((b, n) => `${n}: ${b}`).join("\n"))
+    .join("\n\n");
+  return [
+    `You are a strict but fair examiner grading a CEFR ${i.level} ${T} ${i.kind} task.`,
+    "Score each criterion 0–4 using ONLY the band descriptors below. Pick the band whose description fits best; when between two bands, choose the lower one.",
+    "Judge the answer for an A1 learner: do not penalise simple language. Content in another language than the target earns no credit for vocabulary or grammar.",
+    i.kind === "speaking"
+      ? i.typed
+        ? "The learner TYPED this answer instead of speaking (backup). Grade fluency from the text's length and connectedness."
+        : `This is an automatic transcript of a ${i.seconds ?? "?"}-second spoken answer. Pronunciation cannot be judged; ignore spelling and punctuation; judge fluency from length, completeness and connectedness.`
+      : "",
+    "",
+    `Task: ${i.task}`,
+    `Content points a complete answer covers: ${i.contentPoints.join("; ")}`,
+    "",
+    "# Rubric",
+    rubric,
+    "",
+    `Then write, in ${N}, for the learner: "feedback" (one or two encouraging sentences) and "toWorkOn" (1–2 short, concrete tips with a correct ${T} example).`,
+  ].join("\n");
+}

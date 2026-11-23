@@ -1,9 +1,10 @@
 import "server-only";
-import OpenAI from "openai";
+import OpenAI, { toFile } from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
 import type { AiProvider } from "./index";
 import {
+  gradingInstructions,
   LANGUAGE_NAME_EN,
   summaryInstructions,
   transcriptForAssessment,
@@ -44,6 +45,12 @@ const SummarySchema = z.object({
       note: z.string(),
     }),
   ),
+});
+
+const GradeSchema = z.object({
+  criteria: z.array(z.object({ id: z.string(), score: z.number().int().min(0).max(4), reason: z.string() })),
+  feedback: z.string(),
+  toWorkOn: z.array(z.string()),
 });
 
 export const openaiProvider: AiProvider = {
@@ -91,6 +98,30 @@ export const openaiProvider: AiProvider = {
         inputTokens: res.usage?.input_tokens ?? 0,
         outputTokens: res.usage?.output_tokens ?? 0,
       },
+    };
+  },
+
+  async transcribe(audio, language) {
+    const file = await toFile(audio, audio.name || "speech.webm", { type: audio.type });
+    const res = await openai().audio.transcriptions.create({ file, model: MODELS.transcribe, language });
+    return { text: res.text.trim(), usage: { model: MODELS.transcribe, inputTokens: 0, outputTokens: 0 } };
+  },
+
+  async gradeProductive(input) {
+    const res = await openai().responses.parse({
+      model: MODELS.assess,
+      instructions: gradingInstructions(input),
+      input: input.response.trim() || "(no answer)",
+      text: { format: zodTextFormat(GradeSchema, "rubric_grade") },
+    });
+    const out = res.output_parsed;
+    const criteria: Record<string, number> = {};
+    for (const c of input.rubric) criteria[c.id] = out?.criteria.find((x) => x.id === c.id)?.score ?? 0;
+    return {
+      criteria,
+      feedback: out?.feedback ?? "",
+      toWorkOn: out?.toWorkOn ?? [],
+      usage: { model: MODELS.assess, inputTokens: res.usage?.input_tokens ?? 0, outputTokens: res.usage?.output_tokens ?? 0 },
     };
   },
 

@@ -2,7 +2,7 @@ import "server-only";
 import type { SkillStatus } from "@/lib/types";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
-import { mergeStatus, type LearningStore, type StoredSession } from "./store";
+import { mergeStatus, type LearningStore, type StoredAttempt, type StoredSession, type VocabItem } from "./store";
 
 /** Reads go through the user's client (RLS); trusted writes use the secret key. */
 async function userDb() {
@@ -27,6 +27,29 @@ const toSession = (r: SessionRow): StoredSession => ({
 
 const SESSION_COLS =
   "id, user_id, learner_profile_id, mode, status, planned_minutes, hidden_goal, started_at, ended_at, duration_seconds, transcript, events, summary";
+
+type VocabRow = {
+  id: string; kind: VocabItem["kind"]; term: string; translation: string; note: string | null;
+  due_at: string; interval_days: number; ease: number; reps: number; lapses: number; created_at: string;
+};
+const VOCAB_COLS = "id, kind, term, translation, note, due_at, interval_days, ease, reps, lapses, created_at";
+const toVocab = (r: VocabRow): VocabItem => ({
+  id: r.id, kind: r.kind, term: r.term, translation: r.translation, note: r.note ?? undefined,
+  dueAt: r.due_at, intervalDays: r.interval_days, ease: r.ease, reps: r.reps, lapses: r.lapses, createdAt: r.created_at,
+});
+
+type AttemptRow = {
+  id: string; user_id: string; learner_profile_id: string; kind: StoredAttempt["kind"]; level: StoredAttempt["level"];
+  status: StoredAttempt["status"]; items: StoredAttempt["content"]; overall: number | null;
+  per_skill: StoredAttempt["perSkill"]; passed: boolean | null; feedback: StoredAttempt["feedback"];
+  started_at: string; completed_at: string | null;
+};
+const ATTEMPT_COLS = "id, user_id, learner_profile_id, kind, level, status, items, overall, per_skill, passed, feedback, started_at, completed_at";
+const toAttempt = (r: AttemptRow): StoredAttempt => ({
+  id: r.id, userId: r.user_id, learnerId: r.learner_profile_id, kind: r.kind, level: r.level, status: r.status,
+  content: r.items, overall: r.overall, perSkill: r.per_skill, passed: r.passed, feedback: r.feedback,
+  startedAt: r.started_at, completedAt: r.completed_at,
+});
 
 export const supabaseStore: LearningStore = {
   async getSkillMap(learnerId) {
@@ -146,5 +169,81 @@ export const supabaseStore: LearningStore = {
       input_audio_tokens: e.inputAudioTokens ?? 0, output_audio_tokens: e.outputAudioTokens ?? 0,
       audio_seconds: e.audioSeconds ?? 0,
     });
+  },
+
+  // ------------------------------------------------------------ vocabulary
+  async reviewQueue(learnerId, limit, includeUpcoming) {
+    const db = await userDb();
+    const now = new Date().toISOString();
+    const { data: due } = await db.from("vocabulary_items").select(VOCAB_COLS)
+      .eq("learner_profile_id", learnerId).lte("due_at", now).order("due_at").limit(limit);
+    const items = ((due as VocabRow[] | null) ?? []).map(toVocab);
+    if (includeUpcoming && items.length < limit) {
+      const { data: next } = await db.from("vocabulary_items").select(VOCAB_COLS)
+        .eq("learner_profile_id", learnerId).gt("due_at", now).order("due_at").limit(limit - items.length);
+      items.push(...((next as VocabRow[] | null) ?? []).map(toVocab));
+    }
+    return items;
+  },
+
+  async recentVocabulary(learnerId, limit) {
+    const { data } = await (await userDb()).from("vocabulary_items").select(VOCAB_COLS)
+      .eq("learner_profile_id", learnerId).order("created_at", { ascending: false }).limit(limit);
+    return ((data as VocabRow[] | null) ?? []).map(toVocab);
+  },
+
+  async getVocabItem(learnerId, id) {
+    const { data } = await (await userDb()).from("vocabulary_items").select(VOCAB_COLS)
+      .eq("learner_profile_id", learnerId).eq("id", id).maybeSingle();
+    return data ? toVocab(data as VocabRow) : null;
+  },
+
+  async updateVocabSchedule(learnerId, id, st) {
+    const { error } = await createAdminClient().from("vocabulary_items").update({
+      due_at: st.dueAt, interval_days: st.intervalDays, ease: st.ease, reps: st.reps, lapses: st.lapses,
+    }).eq("id", id).eq("learner_profile_id", learnerId);
+    if (error) throw error;
+  },
+
+  // ------------------------------------------------------------ assessments
+  async createAttempt(a) {
+    const { data, error } = await createAdminClient().from("assessment_attempts").insert({
+      user_id: a.userId, learner_profile_id: a.learnerId, kind: a.kind, level: a.level, items: a.content,
+    }).select(ATTEMPT_COLS).single();
+    if (error) throw error;
+    return toAttempt(data as AttemptRow);
+  },
+
+  async getAttempt(id, userId) {
+    // Admin read (items include answers), scoped to the owner.
+    const { data } = await createAdminClient().from("assessment_attempts").select(ATTEMPT_COLS)
+      .eq("id", id).eq("user_id", userId).maybeSingle();
+    return data ? toAttempt(data as AttemptRow) : null;
+  },
+
+  async updateAttempt(id, p) {
+    const row: Record<string, unknown> = {};
+    if (p.status !== undefined) row.status = p.status;
+    if (p.content !== undefined) row.items = p.content;
+    if (p.overall !== undefined) row.overall = p.overall;
+    if (p.perSkill !== undefined) row.per_skill = p.perSkill;
+    if (p.passed !== undefined) row.passed = p.passed;
+    if (p.feedback !== undefined) row.feedback = p.feedback;
+    if (p.completedAt !== undefined) row.completed_at = p.completedAt;
+    const { error } = await createAdminClient().from("assessment_attempts").update(row).eq("id", id);
+    if (error) throw error;
+  },
+
+  async lastAttempt(learnerId, kind, status) {
+    let q = createAdminClient().from("assessment_attempts").select(ATTEMPT_COLS)
+      .eq("learner_profile_id", learnerId).eq("kind", kind);
+    if (status) q = q.eq("status", status);
+    const { data } = await q.order("started_at", { ascending: false }).limit(1).maybeSingle();
+    return data ? toAttempt(data as AttemptRow) : null;
+  },
+
+  async setLevel(learnerId, level) {
+    const { error } = await createAdminClient().from("learner_profiles").update({ level }).eq("id", learnerId);
+    if (error) throw error;
   },
 };

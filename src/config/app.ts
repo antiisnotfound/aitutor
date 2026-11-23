@@ -32,5 +32,10 @@ export const SESSION = { defaultMinutes: 15, hardCapMinutes: 30 } as const;
 /** Defaults the brief marks as configurable. */
 export const ASSESSMENT = {
   checkInEveryDays: 14,
+  checkInQuestions: 10,
   levelUpPass: { overall: 0.7, minPerSkill: 0.5 },
+  /** Share of the level's can-dos mastered before the level-up exam unlocks. */
+  levelUpUnlockProgress: 0.6,
+  /** Days to wait before retaking a failed level-up exam. */
+  levelUpRetakeDays: 3,
 } as const;

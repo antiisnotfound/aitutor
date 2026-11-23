@@ -83,15 +83,41 @@
     "wordReview": "Ripasso parole",
     "wordsDue": "{due, plural, =0 {Prossimo ripasso domani} one {# parola da ripassare} other {# parole da ripassare}} · {total} salvate",
     "checkIn": "Quiz di verifica",
-    "checkInEvery": "Ogni {days} giorni",
     "lastSession": "Ultima sessione",
     "lastSessionEmpty": "Dopo la prima chiacchierata, qui troverai un breve riepilogo.",
     "wordsNone": "Ancora nessuna parola",
-    "seeSummary": "Vedi il riepilogo"
+    "seeSummary": "Vedi il riepilogo",
+    "checkInDue": "Ora",
+    "checkInIn": "Tra {days, plural, one {# giorno} other {# giorni}}",
+    "levelComplete": "{level} completato! Le lezioni {next} arrivano presto — continua a chiacchierare per restare in forma."
   },
   "practice": {
     "title": "Esercizi",
-    "body": "Qui troverai il ripasso delle parole e i quiz di verifica."
+    "seeResults": "Vedi gli ultimi risultati",
+    "review": {
+      "title": "Ripasso parole",
+      "empty": "Ancora nessuna parola — si aggiungono dopo ogni chiacchierata.",
+      "status": "{due, plural, =0 {Niente da ripassare} one {# parola da ripassare} other {# parole da ripassare}} · {total} salvate",
+      "cta": "Ripassa ora",
+      "ctaAnyway": "Esercitati comunque"
+    },
+    "checkin": {
+      "title": "Quiz di verifica",
+      "due": "Da fare ora",
+      "dueIn": "Il prossimo tra {days, plural, one {# giorno} other {# giorni}}",
+      "last": "ultimo punteggio {score}",
+      "about": "{count} domande, circa 10 min",
+      "cta": "Inizia il quiz",
+      "ctaEarly": "Fallo in anticipo"
+    },
+    "exam": {
+      "title": "Esame di livello: A1",
+      "locked": "Si sblocca quando hai acquisito il {percent}% delle abilità A1. Continua a chiacchierare!",
+      "cooldown": "Puoi ripeterlo tra {days, plural, one {# giorno} other {# giorni}}. Prima esercitati un po'!",
+      "passed": "Superato — complimenti!",
+      "available": "Lettura, ascolto, scrittura e parlato. Circa 30 minuti.",
+      "cta": "Inizia l'esame"
+    }
   },
   "progress": {
     "title": "Progressi",
@@ -225,5 +251,116 @@
     "noSummary": "Questa volta non siamo riusciti a scrivere il riepilogo, ma la conversazione è stata salvata.",
     "reviewNow": "Ripassa ora",
     "backHome": "Torna alla home"
+  },
+  "review": {
+    "metaTitle": "Ripasso parole",
+    "title": "Ripasso parole",
+    "back": "Indietro",
+    "left": "ancora {count}",
+    "word": "Parola",
+    "phrase": "Frase",
+    "listen": "Ascolta",
+    "recall": "Ti ricordi cosa significa?",
+    "show": "Mostra la risposta",
+    "howWell": "Quanto bene la sapevi?",
+    "grades": {
+      "again": "Di nuovo",
+      "hard": "Difficile",
+      "good": "Bene",
+      "easy": "Facile"
+    },
+    "finished": "{count, plural, one {# carta ripassata} other {# carte ripassate}}!",
+    "finishedBody": "Ottimo lavoro. Ogni parola tornerà poco prima che tu la dimentichi.",
+    "nothingDue": "Tutto in pari",
+    "nothingDueBody": "Nessuna parola da ripassare adesso.",
+    "practiceAnyway": "Esercitati sulle prossime parole",
+    "error": "Non salvato. Riprova."
+  },
+  "assessment": {
+    "back": "Indietro",
+    "start": "Inizia",
+    "preparing": "Preparazione…",
+    "partOf": "Parte {current} di {total}",
+    "next": "Avanti",
+    "previous": "Indietro",
+    "submit": "Termina e vedi il punteggio",
+    "submitAnyway": "{count, plural, one {# domanda} other {# domande}} senza risposta — terminare comunque?",
+    "grading": "Valutazione…",
+    "play": "Ascolta",
+    "playsLeft": "{count, plural, =0 {Nessun ascolto rimasto} one {Ancora # ascolto} other {Ancora # ascolti}}",
+    "reset": "Ricomincia",
+    "means": "Significa",
+    "words": "{count} parole (obiettivo {min}–{max})",
+    "skills": {
+      "reading": "Lettura",
+      "listening": "Ascolto",
+      "writing": "Scrittura",
+      "speaking": "Parlato"
+    },
+    "checkin": {
+      "title": "Quiz di verifica",
+      "intro": "Un controllo veloce su ciò che hai praticato di recente: circa 10 domande, circa 10 minuti. Le parole sbagliate tornano nel ripasso."
+    },
+    "levelup": {
+      "title": "Esame di livello: A1",
+      "intro": "Mostra cosa sai fare al livello A1 per sbloccare il livello successivo. Quattro parti, circa 30 minuti. Prenditi il tuo tempo.",
+      "parts": {
+        "reading": "2 testi brevi",
+        "listening": "2 registrazioni, puoi ascoltarle due volte",
+        "writing": "un breve messaggio",
+        "speaking": "2 brevi risposte orali (o scritte)"
+      },
+      "passRule": "Per superarlo: {overall}% in totale e almeno {min}% in ogni parte."
+    },
+    "instructions": {
+      "checkin": {
+        "reading": "Scegli la risposta giusta.",
+        "listening": "Ascolta e scegli il significato.",
+        "writing": "Metti le parole nell'ordine giusto.",
+        "speaking": "Parlato"
+      },
+      "levelup": {
+        "reading": "Leggi il testo e scegli la risposta giusta.",
+        "listening": "Ascolta la registrazione e scegli la risposta giusta.",
+        "writing": "Scrittura",
+        "speaking": "Parlato — registra le tue risposte"
+      }
+    },
+    "speaking": {
+      "suggested": "Parla per circa {seconds} secondi.",
+      "record": "Registra",
+      "recordAgain": "Registra di nuovo",
+      "stop": "Stop",
+      "uploading": "Stiamo ascoltando la tua risposta…",
+      "weHeard": "Abbiamo sentito:",
+      "typeInstead": "Scrivi invece",
+      "recordInstead": "Registra invece",
+      "typeLabel": "Scrivi la tua risposta",
+      "error": "La registrazione non ha funzionato. Riprova o scrivi la risposta."
+    },
+    "errors": {
+      "start": "Impossibile iniziare. Riprova.",
+      "submit": "Impossibile inviare. Controlla la connessione e riprova."
+    }
+  },
+  "results": {
+    "metaTitle": "Risultati",
+    "checkinTitle": "Risultati del quiz",
+    "passedTitle": "Hai superato l'A1! 🎉",
+    "notYetTitle": "Non ancora",
+    "overall": "Punteggio totale",
+    "passed": "Superato",
+    "notPassed": "Non superato",
+    "rule": "Superamento: {overall}% in totale e nessuna parte sotto il {min}%.",
+    "stars": "{count} stelle su 5",
+    "bySkill": "Punteggio per abilità",
+    "toWorkOn": "Su cosa lavorare",
+    "weakSkill": "{skill}: sotto il minimo — esercitati su questo.",
+    "examiner": "Commenti dell'esaminatore",
+    "nextLevelSoon": "Le lezioni A2 arrivano presto. Il tuo nuovo livello è salvato.",
+    "startNextLevel": "Inizia il livello successivo",
+    "practiseMore": "Esercitati con il tutor",
+    "reviewWords": "Ripassa le parole sbagliate",
+    "backToPractice": "Torna agli Esercizi"
   }
 }
