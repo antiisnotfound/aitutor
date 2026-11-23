@@ -1,0 +1,65 @@
+{
+  "common": {
+    "languageNames": { "en": "English", "sq": "Shqip", "it": "Italiano" },
+    "partner": "In collaborazione con Discover Albania",
+    "comingSoon": "Prossimamente",
+    "skipToContent": "Vai al contenuto"
+  },
+  "login": {
+    "metaTitle": "Accedi",
+    "tagline": "Impara una lingua parlando con il tuo tutor.",
+    "nativeLanguage": "Parlo",
+    "continueGoogle": "Continua con Google",
+    "or": "oppure",
+    "email": "Email",
+    "password": "Password",
+    "ageGroup": "Sono",
+    "ageKid": "Un bambino (sotto i 13 anni)",
+    "ageTeen": "Un ragazzo (13–17 anni)",
+    "ageAdult": "Un adulto (18+)",
+    "kidNotice": "Gli account per i bambini vengono creati da un genitore o tutore.",
+    "signIn": "Accedi",
+    "createAccount": "Crea account",
+    "switchToSignUp": "Sei nuovo? Crea un account",
+    "switchToSignIn": "Hai già un account? Accedi",
+    "parentLink": "Iscrivi un bambino? Registrazione genitore",
+    "terms": "Continuando accetti i Termini di servizio e l'Informativa sulla privacy.",
+    "checkEmail": "Controlla la tua email e tocca il link per confermare l'account.",
+    "errors": {
+      "generic": "Qualcosa è andato storto. Riprova.",
+      "invalid": "Email o password non corretti.",
+      "weakPassword": "Usa almeno 8 caratteri per la password.",
+      "missingFields": "Compila tutti i campi.",
+      "notConfigured": "L'accesso non è ancora configurato: aggiungi le chiavi Supabase in .env.local.",
+      "callback": "Non siamo riusciti a completare l'accesso. Riprova."
+    }
+  },
+  "parent": {
+    "metaTitle": "Registrazione genitore",
+    "title": "Registrazione per genitori e tutori",
+    "body": "I bambini imparano con il permesso di un genitore. Presto potrai creare qui il tuo account, dare il consenso e impostare un profilo per tuo figlio con contenuti adatti e dati minimi.",
+    "back": "Torna all'accesso"
+  },
+  "nav": {
+    "label": "Principale",
+    "home": "Home",
+    "practice": "Esercizi",
+    "progress": "Progressi",
+    "profile": "Profilo"
+  },
+  "home": {
+    "greeting": "Ciao, {name}!",
+    "greetingNoName": "Ciao!",
+    "nextUp": "Prossimo passo: crea il tuo piano di studio",
+    "nextUpBody": "Scegli la lingua da imparare, i tuoi obiettivi e il tuo tutor. Ci vuole circa un minuto."
+  },
+  "practice": { "title": "Esercizi", "body": "Qui troverai il ripasso delle parole e i quiz di verifica." },
+  "progress": { "title": "Progressi", "body": "Qui troverai la tua mappa dei livelli QCER, da A1 a C2." },
+  "profile": {
+    "title": "Profilo",
+    "signedInAs": "Accesso effettuato come",
+    "interfaceLanguage": "Lingua dell'app",
+    "kidsPreview": "Aspetto per bambini (anteprima)",
+    "signOut": "Esci"
+  }
+}

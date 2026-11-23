@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ---------- Brand palette (Discover Albania) ---------- */
+@theme {
+  --color-navy: #1a202c;
+  --color-slate-navy: #2e3b55;
+  --color-teal: #008080;
+  --color-teal-dark: #0f4c5c;
+  --color-lime: #bef264;
+  --color-lime-pale: #f7fee7;
+  --color-cyan: #22d3ee;
+  --color-kids-bg: #ecfeff;
+  --color-kids-border: #a5f3fc;
+
+  --font-display: var(--font-alfa-slab), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+/* ---------- Semantic tokens, switched by data-theme ---------- */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-link: var(--link);
+  --radius-card: var(--radius-card);
+  --spacing-tap: var(--tap);
+}
+
+/* Adults & teens: dark navy, calm, premium (default) */
+:root,
+[data-theme="adult"] {
+  --bg: #1a202c;
+  --surface: #2e3b55;
+  --surface-2: #0f4c5c;
+  --fg: #ffffff;
+  --muted: #cbd5e1;
+  --line: rgb(255 255 255 / 0.14);
+  --accent: #bef264;
+  --on-accent: #1a202c;
+  --link: #22d3ee;
+  --radius-card: 1.25rem;
+  --tap: 44px;
+}
+
+/* Kids: light cyan, rounded, bigger targets */
+[data-theme="kids"] {
+  --bg: #ecfeff;
+  --surface: #ffffff;
+  --surface-2: #f7fee7;
+  --fg: #1a202c;
+  --muted: #2e3b55;
+  --line: #a5f3fc;
+  --accent: #bef264;
+  --on-accent: #1a202c;
+  --link: #0f4c5c;
+  --radius-card: 1.75rem;
+  --tap: 52px;
+  font-size: 1.125rem;
+}
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+:focus-visible {
+  outline: 3px solid var(--link);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

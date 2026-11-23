@@ -1,0 +1,65 @@
+{
+  "common": {
+    "languageNames": { "en": "English", "sq": "Shqip", "it": "Italiano" },
+    "partner": "In partnership with Discover Albania",
+    "comingSoon": "Coming soon",
+    "skipToContent": "Skip to content"
+  },
+  "login": {
+    "metaTitle": "Sign in",
+    "tagline": "Learn a language by talking with your own tutor.",
+    "nativeLanguage": "I speak",
+    "continueGoogle": "Continue with Google",
+    "or": "or",
+    "email": "Email",
+    "password": "Password",
+    "ageGroup": "I am",
+    "ageKid": "A child (under 13)",
+    "ageTeen": "A teen (13–17)",
+    "ageAdult": "An adult (18+)",
+    "kidNotice": "Accounts for children are set up by a parent or guardian.",
+    "signIn": "Sign in",
+    "createAccount": "Create account",
+    "switchToSignUp": "New here? Create an account",
+    "switchToSignIn": "Already have an account? Sign in",
+    "parentLink": "Signing up for a child? Parent sign-up",
+    "terms": "By continuing you agree to our Terms of Service and Privacy Policy.",
+    "checkEmail": "Check your email and tap the link to confirm your account.",
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "invalid": "Email or password is incorrect.",
+      "weakPassword": "Use at least 8 characters for your password.",
+      "missingFields": "Please fill in every field.",
+      "notConfigured": "Sign-in isn't set up yet: add the Supabase keys to .env.local.",
+      "callback": "We couldn't finish signing you in. Please try again."
+    }
+  },
+  "parent": {
+    "metaTitle": "Parent sign-up",
+    "title": "Parent & guardian sign-up",
+    "body": "Children learn with a parent's permission. Soon you'll be able to create your own account here, give consent and set up a child profile with kid-safe content and minimal data.",
+    "back": "Back to sign in"
+  },
+  "nav": {
+    "label": "Main",
+    "home": "Home",
+    "practice": "Practice",
+    "progress": "Progress",
+    "profile": "Profile"
+  },
+  "home": {
+    "greeting": "Hi, {name}!",
+    "greetingNoName": "Hi there!",
+    "nextUp": "Next up: set up your learning plan",
+    "nextUpBody": "Pick the language you want to learn, your goals and your tutor. It takes about a minute."
+  },
+  "practice": { "title": "Practice", "body": "Word review and check-in quizzes will live here." },
+  "progress": { "title": "Progress", "body": "Your CEFR level map, from A1 to C2, will live here." },
+  "profile": {
+    "title": "Profile",
+    "signedInAs": "Signed in as",
+    "interfaceLanguage": "App language",
+    "kidsPreview": "Kids look (preview)",
+    "signOut": "Sign out"
+  }
+}

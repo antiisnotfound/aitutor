@@ -1,0 +1,65 @@
+{
+  "common": {
+    "languageNames": { "en": "English", "sq": "Shqip", "it": "Italiano" },
+    "partner": "Në partneritet me Discover Albania",
+    "comingSoon": "Së shpejti",
+    "skipToContent": "Kalo te përmbajtja"
+  },
+  "login": {
+    "metaTitle": "Hyr",
+    "tagline": "Mëso një gjuhë duke biseduar me mësuesin tënd.",
+    "nativeLanguage": "Unë flas",
+    "continueGoogle": "Vazhdo me Google",
+    "or": "ose",
+    "email": "Email",
+    "password": "Fjalëkalimi",
+    "ageGroup": "Unë jam",
+    "ageKid": "Fëmijë (nën 13 vjeç)",
+    "ageTeen": "Adoleshent (13–17 vjeç)",
+    "ageAdult": "I rritur (18+)",
+    "kidNotice": "Llogaritë për fëmijët krijohen nga një prind ose kujdestar.",
+    "signIn": "Hyr",
+    "createAccount": "Krijo llogari",
+    "switchToSignUp": "I ri këtu? Krijo një llogari",
+    "switchToSignIn": "Ke tashmë llogari? Hyr",
+    "parentLink": "Po regjistron një fëmijë? Regjistrimi i prindit",
+    "terms": "Duke vazhduar, pranon Kushtet e Shërbimit dhe Politikën e Privatësisë.",
+    "checkEmail": "Kontrollo email-in dhe shtyp lidhjen për të konfirmuar llogarinë.",
+    "errors": {
+      "generic": "Diçka shkoi keq. Provo përsëri.",
+      "invalid": "Email-i ose fjalëkalimi është i pasaktë.",
+      "weakPassword": "Përdor të paktën 8 karaktere për fjalëkalimin.",
+      "missingFields": "Plotëso të gjitha fushat.",
+      "notConfigured": "Hyrja nuk është konfiguruar ende: shto çelësat e Supabase në .env.local.",
+      "callback": "Nuk arritëm të përfundojmë hyrjen. Provo përsëri."
+    }
+  },
+  "parent": {
+    "metaTitle": "Regjistrimi i prindit",
+    "title": "Regjistrimi i prindit ose kujdestarit",
+    "body": "Fëmijët mësojnë me lejen e prindit. Së shpejti do të mund të krijosh llogarinë tënde këtu, të japësh pëlqimin dhe të krijosh një profil fëmije me përmbajtje të sigurt dhe sa më pak të dhëna.",
+    "back": "Kthehu te hyrja"
+  },
+  "nav": {
+    "label": "Kryesore",
+    "home": "Kreu",
+    "practice": "Ushtrime",
+    "progress": "Përparimi",
+    "profile": "Profili"
+  },
+  "home": {
+    "greeting": "Përshëndetje, {name}!",
+    "greetingNoName": "Përshëndetje!",
+    "nextUp": "Hapi tjetër: krijo planin tënd të mësimit",
+    "nextUpBody": "Zgjidh gjuhën që do të mësosh, qëllimet dhe mësuesin. Zgjat rreth një minutë."
+  },
+  "practice": { "title": "Ushtrime", "body": "Përsëritja e fjalëve dhe kuizet e kontrollit do të jenë këtu." },
+  "progress": { "title": "Përparimi", "body": "Harta jote e niveleve CEFR, nga A1 në C2, do të jetë këtu." },
+  "profile": {
+    "title": "Profili",
+    "signedInAs": "Ke hyrë si",
+    "interfaceLanguage": "Gjuha e aplikacionit",
+    "kidsPreview": "Pamja për fëmijë (paraparje)",
+    "signOut": "Dil"
+  }
+}
